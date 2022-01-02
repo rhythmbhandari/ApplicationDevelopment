@@ -30,40 +30,40 @@ namespace Coursework
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabHomePage = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnLoad = new System.Windows.Forms.Button();
+            this.pnlIssueTicket = new System.Windows.Forms.Panel();
+            this.btnImport = new System.Windows.Forms.Button();
             this.comboBoxDuration = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.lblDuration = new System.Windows.Forms.Label();
+            this.txtBoxPrice = new System.Windows.Forms.TextBox();
             this.lblPrice = new System.Windows.Forms.Label();
-            this.txtOutTime = new System.Windows.Forms.TextBox();
+            this.txtBoxOutTime = new System.Windows.Forms.TextBox();
             this.lblOutTime = new System.Windows.Forms.Label();
-            this.btnTicket = new System.Windows.Forms.Button();
-            this.txtEntryTime = new System.Windows.Forms.TextBox();
+            this.btnIssueTicket = new System.Windows.Forms.Button();
+            this.txtBoxEntryTime = new System.Windows.Forms.TextBox();
             this.lblEntryTime = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboGroupBy = new System.Windows.Forms.ComboBox();
-            this.txtPhone = new System.Windows.Forms.TextBox();
-            this.txtFullName = new System.Windows.Forms.TextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.radioAdult = new System.Windows.Forms.RadioButton();
-            this.radioChild = new System.Windows.Forms.RadioButton();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtVisitorID = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.DatePicker = new System.Windows.Forms.DateTimePicker();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblGroup = new System.Windows.Forms.Label();
+            this.comboBoxGroupBy = new System.Windows.Forms.ComboBox();
+            this.txtBoxPhone = new System.Windows.Forms.TextBox();
+            this.txtBoxFullName = new System.Windows.Forms.TextBox();
+            this.pnlAgeRadioGroup = new System.Windows.Forms.Panel();
+            this.radioBtnAdult = new System.Windows.Forms.RadioButton();
+            this.radioBtnChild = new System.Windows.Forms.RadioButton();
+            this.lblAge = new System.Windows.Forms.Label();
+            this.lblVisitorId = new System.Windows.Forms.Label();
+            this.lblPhoneNumber = new System.Windows.Forms.Label();
+            this.txtBoxVisitorId = new System.Windows.Forms.TextBox();
+            this.lblFullName = new System.Windows.Forms.Label();
+            this.datePickerDate = new System.Windows.Forms.DateTimePicker();
+            this.dataGridEntryForm = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.lblTicket = new System.Windows.Forms.Label();
             this.btnTicketExport = new System.Windows.Forms.Button();
@@ -71,31 +71,28 @@ namespace Coursework
             this.btnTicketImport = new System.Windows.Forms.Button();
             this.dataGridTicketRates = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnImportDailyReport = new System.Windows.Forms.Button();
-            this.DailyReportButton = new System.Windows.Forms.Button();
-            this.DailyReportDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridDailyReport = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.SortByEarningButton = new System.Windows.Forms.Button();
-            this.SortByVisitorsButton = new System.Windows.Forms.Button();
-            this.WeeklyReportButton = new System.Windows.Forms.Button();
-            this.WeeklyReportDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridWeeklyReport = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.chartEarning = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnGenerateVisitorChart = new System.Windows.Forms.Button();
             this.chartVisitor = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnGenerateDailyReport = new System.Windows.Forms.Button();
+            this.btnGenerateWeeklyReport = new System.Windows.Forms.Button();
             this.tabHomePage.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.pnlIssueTicket.SuspendLayout();
+            this.pnlAgeRadioGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridEntryForm)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTicketRates)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DailyReportDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDailyReport)).BeginInit();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WeeklyReportDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridWeeklyReport)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartEarning)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartVisitor)).BeginInit();
@@ -117,8 +114,8 @@ namespace Coursework
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Controls.Add(this.pnlIssueTicket);
+            this.tabPage1.Controls.Add(this.dataGridEntryForm);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -126,49 +123,47 @@ namespace Coursework
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Entry Form";
             this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // panel1
+            // pnlIssueTicket
             // 
-            this.panel1.Controls.Add(this.btnLoad);
-            this.panel1.Controls.Add(this.comboBoxDuration);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.txtPrice);
-            this.panel1.Controls.Add(this.lblPrice);
-            this.panel1.Controls.Add(this.txtOutTime);
-            this.panel1.Controls.Add(this.lblOutTime);
-            this.panel1.Controls.Add(this.btnTicket);
-            this.panel1.Controls.Add(this.txtEntryTime);
-            this.panel1.Controls.Add(this.lblEntryTime);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.comboGroupBy);
-            this.panel1.Controls.Add(this.txtPhone);
-            this.panel1.Controls.Add(this.txtFullName);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.txtVisitorID);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.DatePicker);
-            this.panel1.Location = new System.Drawing.Point(9, 13);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1132, 270);
-            this.panel1.TabIndex = 24;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.pnlIssueTicket.Controls.Add(this.btnImport);
+            this.pnlIssueTicket.Controls.Add(this.comboBoxDuration);
+            this.pnlIssueTicket.Controls.Add(this.lblDuration);
+            this.pnlIssueTicket.Controls.Add(this.txtBoxPrice);
+            this.pnlIssueTicket.Controls.Add(this.lblPrice);
+            this.pnlIssueTicket.Controls.Add(this.txtBoxOutTime);
+            this.pnlIssueTicket.Controls.Add(this.lblOutTime);
+            this.pnlIssueTicket.Controls.Add(this.btnIssueTicket);
+            this.pnlIssueTicket.Controls.Add(this.txtBoxEntryTime);
+            this.pnlIssueTicket.Controls.Add(this.lblEntryTime);
+            this.pnlIssueTicket.Controls.Add(this.lblDate);
+            this.pnlIssueTicket.Controls.Add(this.lblGroup);
+            this.pnlIssueTicket.Controls.Add(this.comboBoxGroupBy);
+            this.pnlIssueTicket.Controls.Add(this.txtBoxPhone);
+            this.pnlIssueTicket.Controls.Add(this.txtBoxFullName);
+            this.pnlIssueTicket.Controls.Add(this.pnlAgeRadioGroup);
+            this.pnlIssueTicket.Controls.Add(this.lblAge);
+            this.pnlIssueTicket.Controls.Add(this.lblVisitorId);
+            this.pnlIssueTicket.Controls.Add(this.lblPhoneNumber);
+            this.pnlIssueTicket.Controls.Add(this.txtBoxVisitorId);
+            this.pnlIssueTicket.Controls.Add(this.lblFullName);
+            this.pnlIssueTicket.Controls.Add(this.datePickerDate);
+            this.pnlIssueTicket.Location = new System.Drawing.Point(9, 13);
+            this.pnlIssueTicket.Name = "pnlIssueTicket";
+            this.pnlIssueTicket.Size = new System.Drawing.Size(1132, 270);
+            this.pnlIssueTicket.TabIndex = 24;
             // 
-            // btnLoad
+            // btnImport
             // 
-            this.btnLoad.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoad.Location = new System.Drawing.Point(21, 219);
-            this.btnLoad.Margin = new System.Windows.Forms.Padding(4);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(152, 37);
-            this.btnLoad.TabIndex = 43;
-            this.btnLoad.Text = "Import";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click_1);
+            this.btnImport.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImport.Location = new System.Drawing.Point(21, 219);
+            this.btnImport.Margin = new System.Windows.Forms.Padding(4);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(152, 37);
+            this.btnImport.TabIndex = 43;
+            this.btnImport.Text = "Import";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnLoad_Click_1);
             // 
             // comboBoxDuration
             // 
@@ -187,26 +182,26 @@ namespace Coursework
             this.comboBoxDuration.TabIndex = 42;
             this.comboBoxDuration.SelectedIndexChanged += new System.EventHandler(this.comboBoxDuration_SelectedIndexChanged);
             // 
-            // label9
+            // lblDuration
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(798, 123);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(108, 17);
-            this.label9.TabIndex = 41;
-            this.label9.Text = "Duration :";
+            this.lblDuration.AutoSize = true;
+            this.lblDuration.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDuration.Location = new System.Drawing.Point(798, 123);
+            this.lblDuration.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDuration.Name = "lblDuration";
+            this.lblDuration.Size = new System.Drawing.Size(108, 17);
+            this.lblDuration.TabIndex = 41;
+            this.lblDuration.Text = "Duration :";
             // 
-            // txtPrice
+            // txtBoxPrice
             // 
-            this.txtPrice.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrice.Location = new System.Drawing.Point(969, 166);
-            this.txtPrice.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.ReadOnly = true;
-            this.txtPrice.Size = new System.Drawing.Size(146, 22);
-            this.txtPrice.TabIndex = 39;
+            this.txtBoxPrice.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxPrice.Location = new System.Drawing.Point(969, 166);
+            this.txtBoxPrice.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxPrice.Name = "txtBoxPrice";
+            this.txtBoxPrice.ReadOnly = true;
+            this.txtBoxPrice.Size = new System.Drawing.Size(146, 22);
+            this.txtBoxPrice.TabIndex = 39;
             // 
             // lblPrice
             // 
@@ -219,16 +214,15 @@ namespace Coursework
             this.lblPrice.TabIndex = 38;
             this.lblPrice.Text = "Price :";
             // 
-            // txtOutTime
+            // txtBoxOutTime
             // 
-            this.txtOutTime.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOutTime.Location = new System.Drawing.Point(969, 63);
-            this.txtOutTime.Margin = new System.Windows.Forms.Padding(4);
-            this.txtOutTime.Name = "txtOutTime";
-            this.txtOutTime.ReadOnly = true;
-            this.txtOutTime.Size = new System.Drawing.Size(146, 22);
-            this.txtOutTime.TabIndex = 37;
-            this.txtOutTime.TextChanged += new System.EventHandler(this.txtOutTime_TextChanged);
+            this.txtBoxOutTime.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxOutTime.Location = new System.Drawing.Point(969, 63);
+            this.txtBoxOutTime.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxOutTime.Name = "txtBoxOutTime";
+            this.txtBoxOutTime.ReadOnly = true;
+            this.txtBoxOutTime.Size = new System.Drawing.Size(146, 22);
+            this.txtBoxOutTime.TabIndex = 37;
             // 
             // lblOutTime
             // 
@@ -241,28 +235,28 @@ namespace Coursework
             this.lblOutTime.TabIndex = 36;
             this.lblOutTime.Text = "Out Time :";
             // 
-            // btnTicket
+            // btnIssueTicket
             // 
-            this.btnTicket.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTicket.Location = new System.Drawing.Point(957, 219);
-            this.btnTicket.Margin = new System.Windows.Forms.Padding(4);
-            this.btnTicket.Name = "btnTicket";
-            this.btnTicket.Size = new System.Drawing.Size(158, 37);
-            this.btnTicket.TabIndex = 4;
-            this.btnTicket.Text = "Entry";
-            this.btnTicket.UseVisualStyleBackColor = true;
-            this.btnTicket.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnIssueTicket.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIssueTicket.Location = new System.Drawing.Point(957, 219);
+            this.btnIssueTicket.Margin = new System.Windows.Forms.Padding(4);
+            this.btnIssueTicket.Name = "btnIssueTicket";
+            this.btnIssueTicket.Size = new System.Drawing.Size(158, 37);
+            this.btnIssueTicket.TabIndex = 4;
+            this.btnIssueTicket.Text = "Issue Ticket";
+            this.btnIssueTicket.UseVisualStyleBackColor = true;
+            this.btnIssueTicket.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtEntryTime
+            // txtBoxEntryTime
             // 
-            this.txtEntryTime.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEntryTime.Location = new System.Drawing.Point(969, 10);
-            this.txtEntryTime.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEntryTime.Name = "txtEntryTime";
-            this.txtEntryTime.ReadOnly = true;
-            this.txtEntryTime.Size = new System.Drawing.Size(146, 22);
-            this.txtEntryTime.TabIndex = 35;
-            this.txtEntryTime.Click += new System.EventHandler(this.txtEntryTime_Click);
+            this.txtBoxEntryTime.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxEntryTime.Location = new System.Drawing.Point(969, 10);
+            this.txtBoxEntryTime.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxEntryTime.Name = "txtBoxEntryTime";
+            this.txtBoxEntryTime.ReadOnly = true;
+            this.txtBoxEntryTime.Size = new System.Drawing.Size(146, 22);
+            this.txtBoxEntryTime.TabIndex = 35;
+            this.txtBoxEntryTime.Click += new System.EventHandler(this.txtEntryTime_Click);
             // 
             // lblEntryTime
             // 
@@ -275,172 +269,170 @@ namespace Coursework
             this.lblEntryTime.TabIndex = 34;
             this.lblEntryTime.Text = "Entry Time :";
             // 
-            // label5
+            // lblDate
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(409, 171);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 17);
-            this.label5.TabIndex = 31;
-            this.label5.Text = "Date : ";
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Location = new System.Drawing.Point(409, 171);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(78, 17);
+            this.lblDate.TabIndex = 31;
+            this.lblDate.Text = "Date : ";
             // 
-            // label4
+            // lblGroup
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(398, 120);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 17);
-            this.label4.TabIndex = 30;
-            this.label4.Text = "Group :";
+            this.lblGroup.AutoSize = true;
+            this.lblGroup.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGroup.Location = new System.Drawing.Point(398, 120);
+            this.lblGroup.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblGroup.Name = "lblGroup";
+            this.lblGroup.Size = new System.Drawing.Size(78, 17);
+            this.lblGroup.TabIndex = 30;
+            this.lblGroup.Text = "Group :";
             // 
-            // comboGroupBy
+            // comboBoxGroupBy
             // 
-            this.comboGroupBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboGroupBy.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboGroupBy.Items.AddRange(new object[] {
+            this.comboBoxGroupBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxGroupBy.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxGroupBy.Items.AddRange(new object[] {
             "Single",
             "Group of 5",
             "Group of 10",
             "Group of 15"});
-            this.comboGroupBy.Location = new System.Drawing.Point(496, 116);
-            this.comboGroupBy.Margin = new System.Windows.Forms.Padding(4);
-            this.comboGroupBy.Name = "comboGroupBy";
-            this.comboGroupBy.Size = new System.Drawing.Size(243, 23);
-            this.comboGroupBy.TabIndex = 29;
+            this.comboBoxGroupBy.Location = new System.Drawing.Point(496, 116);
+            this.comboBoxGroupBy.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxGroupBy.Name = "comboBoxGroupBy";
+            this.comboBoxGroupBy.Size = new System.Drawing.Size(243, 23);
+            this.comboBoxGroupBy.TabIndex = 29;
             // 
-            // txtPhone
+            // txtBoxPhone
             // 
-            this.txtPhone.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.Location = new System.Drawing.Point(173, 118);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(195, 22);
-            this.txtPhone.TabIndex = 28;
+            this.txtBoxPhone.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxPhone.Location = new System.Drawing.Point(173, 118);
+            this.txtBoxPhone.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxPhone.Name = "txtBoxPhone";
+            this.txtBoxPhone.Size = new System.Drawing.Size(195, 22);
+            this.txtBoxPhone.TabIndex = 28;
             // 
-            // txtFullName
+            // txtBoxFullName
             // 
-            this.txtFullName.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFullName.Location = new System.Drawing.Point(173, 63);
-            this.txtFullName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(195, 22);
-            this.txtFullName.TabIndex = 27;
+            this.txtBoxFullName.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxFullName.Location = new System.Drawing.Point(173, 63);
+            this.txtBoxFullName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxFullName.Name = "txtBoxFullName";
+            this.txtBoxFullName.Size = new System.Drawing.Size(195, 22);
+            this.txtBoxFullName.TabIndex = 27;
             // 
-            // panel3
+            // pnlAgeRadioGroup
             // 
-            this.panel3.Controls.Add(this.radioAdult);
-            this.panel3.Controls.Add(this.radioChild);
-            this.panel3.Location = new System.Drawing.Point(495, 4);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(243, 81);
-            this.panel3.TabIndex = 26;
+            this.pnlAgeRadioGroup.Controls.Add(this.radioBtnAdult);
+            this.pnlAgeRadioGroup.Controls.Add(this.radioBtnChild);
+            this.pnlAgeRadioGroup.Location = new System.Drawing.Point(495, 4);
+            this.pnlAgeRadioGroup.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlAgeRadioGroup.Name = "pnlAgeRadioGroup";
+            this.pnlAgeRadioGroup.Size = new System.Drawing.Size(243, 81);
+            this.pnlAgeRadioGroup.TabIndex = 26;
             // 
-            // radioAdult
+            // radioBtnAdult
             // 
-            this.radioAdult.AutoSize = true;
-            this.radioAdult.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioAdult.Location = new System.Drawing.Point(11, 43);
-            this.radioAdult.Margin = new System.Windows.Forms.Padding(4);
-            this.radioAdult.Name = "radioAdult";
-            this.radioAdult.Size = new System.Drawing.Size(217, 19);
-            this.radioAdult.TabIndex = 9;
-            this.radioAdult.TabStop = true;
-            this.radioAdult.Text = "Adult (older than 12)";
-            this.radioAdult.UseVisualStyleBackColor = true;
-            this.radioAdult.CheckedChanged += new System.EventHandler(this.AdultButton_CheckedChanged);
+            this.radioBtnAdult.AutoSize = true;
+            this.radioBtnAdult.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioBtnAdult.Location = new System.Drawing.Point(11, 43);
+            this.radioBtnAdult.Margin = new System.Windows.Forms.Padding(4);
+            this.radioBtnAdult.Name = "radioBtnAdult";
+            this.radioBtnAdult.Size = new System.Drawing.Size(217, 19);
+            this.radioBtnAdult.TabIndex = 9;
+            this.radioBtnAdult.TabStop = true;
+            this.radioBtnAdult.Text = "Adult (older than 12)";
+            this.radioBtnAdult.UseVisualStyleBackColor = true;
             // 
-            // radioChild
+            // radioBtnChild
             // 
-            this.radioChild.AutoSize = true;
-            this.radioChild.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioChild.Location = new System.Drawing.Point(11, 14);
-            this.radioChild.Margin = new System.Windows.Forms.Padding(4);
-            this.radioChild.Name = "radioChild";
-            this.radioChild.Size = new System.Drawing.Size(190, 19);
-            this.radioChild.TabIndex = 8;
-            this.radioChild.TabStop = true;
-            this.radioChild.Text = "Children (till 12)";
-            this.radioChild.UseVisualStyleBackColor = true;
+            this.radioBtnChild.AutoSize = true;
+            this.radioBtnChild.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioBtnChild.Location = new System.Drawing.Point(11, 14);
+            this.radioBtnChild.Margin = new System.Windows.Forms.Padding(4);
+            this.radioBtnChild.Name = "radioBtnChild";
+            this.radioBtnChild.Size = new System.Drawing.Size(190, 19);
+            this.radioBtnChild.TabIndex = 8;
+            this.radioBtnChild.TabStop = true;
+            this.radioBtnChild.Text = "Children (till 12)";
+            this.radioBtnChild.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // lblAge
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(418, 17);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 17);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "Age :";
+            this.lblAge.AutoSize = true;
+            this.lblAge.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAge.Location = new System.Drawing.Point(418, 17);
+            this.lblAge.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAge.Name = "lblAge";
+            this.lblAge.Size = new System.Drawing.Size(58, 17);
+            this.lblAge.TabIndex = 24;
+            this.lblAge.Text = "Age :";
             // 
-            // label1
+            // lblVisitorId
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 17);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 17);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Visitor ID :";
+            this.lblVisitorId.AutoSize = true;
+            this.lblVisitorId.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVisitorId.Location = new System.Drawing.Point(18, 17);
+            this.lblVisitorId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVisitorId.Name = "lblVisitorId";
+            this.lblVisitorId.Size = new System.Drawing.Size(128, 17);
+            this.lblVisitorId.TabIndex = 11;
+            this.lblVisitorId.Text = "Visitor ID :";
             // 
-            // label7
+            // lblPhoneNumber
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(18, 123);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(138, 17);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "Phone Number:";
+            this.lblPhoneNumber.AutoSize = true;
+            this.lblPhoneNumber.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPhoneNumber.Location = new System.Drawing.Point(18, 123);
+            this.lblPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPhoneNumber.Name = "lblPhoneNumber";
+            this.lblPhoneNumber.Size = new System.Drawing.Size(138, 17);
+            this.lblPhoneNumber.TabIndex = 23;
+            this.lblPhoneNumber.Text = "Phone Number:";
             // 
-            // txtVisitorID
+            // txtBoxVisitorId
             // 
-            this.txtVisitorID.Enabled = false;
-            this.txtVisitorID.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVisitorID.Location = new System.Drawing.Point(171, 12);
-            this.txtVisitorID.Margin = new System.Windows.Forms.Padding(4);
-            this.txtVisitorID.Name = "txtVisitorID";
-            this.txtVisitorID.Size = new System.Drawing.Size(195, 22);
-            this.txtVisitorID.TabIndex = 12;
+            this.txtBoxVisitorId.Enabled = false;
+            this.txtBoxVisitorId.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxVisitorId.Location = new System.Drawing.Point(171, 12);
+            this.txtBoxVisitorId.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxVisitorId.Name = "txtBoxVisitorId";
+            this.txtBoxVisitorId.Size = new System.Drawing.Size(195, 22);
+            this.txtBoxVisitorId.TabIndex = 12;
             // 
-            // label2
+            // lblFullName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 68);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 17);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Full Name :";
+            this.lblFullName.AutoSize = true;
+            this.lblFullName.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFullName.Location = new System.Drawing.Point(19, 68);
+            this.lblFullName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFullName.Name = "lblFullName";
+            this.lblFullName.Size = new System.Drawing.Size(118, 17);
+            this.lblFullName.TabIndex = 20;
+            this.lblFullName.Text = "Full Name :";
             // 
-            // DatePicker
+            // datePickerDate
             // 
-            this.DatePicker.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DatePicker.Location = new System.Drawing.Point(495, 166);
-            this.DatePicker.Margin = new System.Windows.Forms.Padding(4);
-            this.DatePicker.Name = "DatePicker";
-            this.DatePicker.Size = new System.Drawing.Size(240, 22);
-            this.DatePicker.TabIndex = 15;
+            this.datePickerDate.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datePickerDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datePickerDate.Location = new System.Drawing.Point(495, 166);
+            this.datePickerDate.Margin = new System.Windows.Forms.Padding(4);
+            this.datePickerDate.Name = "datePickerDate";
+            this.datePickerDate.Size = new System.Drawing.Size(240, 22);
+            this.datePickerDate.TabIndex = 15;
             // 
-            // dataGridView1
+            // dataGridEntryForm
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 303);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 44;
-            this.dataGridView1.Size = new System.Drawing.Size(1131, 334);
-            this.dataGridView1.TabIndex = 3;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridEntryForm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridEntryForm.Location = new System.Drawing.Point(9, 303);
+            this.dataGridEntryForm.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridEntryForm.Name = "dataGridEntryForm";
+            this.dataGridEntryForm.RowHeadersWidth = 44;
+            this.dataGridEntryForm.Size = new System.Drawing.Size(1131, 334);
+            this.dataGridEntryForm.TabIndex = 3;
             // 
             // tabPage2
             // 
@@ -470,7 +462,7 @@ namespace Coursework
             // 
             // btnTicketExport
             // 
-            this.btnTicketExport.Location = new System.Drawing.Point(714, 431);
+            this.btnTicketExport.Location = new System.Drawing.Point(469, 431);
             this.btnTicketExport.Margin = new System.Windows.Forms.Padding(4);
             this.btnTicketExport.Name = "btnTicketExport";
             this.btnTicketExport.Size = new System.Drawing.Size(237, 52);
@@ -480,14 +472,13 @@ namespace Coursework
             // 
             // btnTicketEdit
             // 
-            this.btnTicketEdit.Location = new System.Drawing.Point(469, 431);
+            this.btnTicketEdit.Location = new System.Drawing.Point(714, 431);
             this.btnTicketEdit.Margin = new System.Windows.Forms.Padding(4);
             this.btnTicketEdit.Name = "btnTicketEdit";
             this.btnTicketEdit.Size = new System.Drawing.Size(237, 52);
             this.btnTicketEdit.TabIndex = 5;
             this.btnTicketEdit.Text = "Edit";
             this.btnTicketEdit.UseVisualStyleBackColor = true;
-            this.btnTicketEdit.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnTicketImport
             // 
@@ -511,9 +502,8 @@ namespace Coursework
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.btnImportDailyReport);
-            this.tabPage3.Controls.Add(this.DailyReportButton);
-            this.tabPage3.Controls.Add(this.DailyReportDataGridView);
+            this.tabPage3.Controls.Add(this.btnGenerateDailyReport);
+            this.tabPage3.Controls.Add(this.dataGridDailyReport);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -522,46 +512,22 @@ namespace Coursework
             this.tabPage3.Text = "Daily Report";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // btnImportDailyReport
+            // dataGridDailyReport
             // 
-            this.btnImportDailyReport.Location = new System.Drawing.Point(77, 517);
-            this.btnImportDailyReport.Margin = new System.Windows.Forms.Padding(4);
-            this.btnImportDailyReport.Name = "btnImportDailyReport";
-            this.btnImportDailyReport.Size = new System.Drawing.Size(237, 52);
-            this.btnImportDailyReport.TabIndex = 15;
-            this.btnImportDailyReport.Text = "Import";
-            this.btnImportDailyReport.UseVisualStyleBackColor = true;
-            this.btnImportDailyReport.Click += new System.EventHandler(this.btnImportDailyReport_Click);
-            // 
-            // DailyReportButton
-            // 
-            this.DailyReportButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.DailyReportButton.Font = new System.Drawing.Font("Lucida Calligraphy", 13.8F, System.Drawing.FontStyle.Bold);
-            this.DailyReportButton.ForeColor = System.Drawing.Color.White;
-            this.DailyReportButton.Location = new System.Drawing.Point(361, 517);
-            this.DailyReportButton.Name = "DailyReportButton";
-            this.DailyReportButton.Size = new System.Drawing.Size(401, 72);
-            this.DailyReportButton.TabIndex = 14;
-            this.DailyReportButton.Text = "Generate Daily Report";
-            this.DailyReportButton.UseVisualStyleBackColor = false;
-            this.DailyReportButton.Click += new System.EventHandler(this.DailyReportButton_Click);
-            // 
-            // DailyReportDataGridView
-            // 
-            this.DailyReportDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DailyReportDataGridView.Location = new System.Drawing.Point(8, 38);
-            this.DailyReportDataGridView.Name = "DailyReportDataGridView";
-            this.DailyReportDataGridView.RowHeadersWidth = 51;
-            this.DailyReportDataGridView.RowTemplate.Height = 24;
-            this.DailyReportDataGridView.Size = new System.Drawing.Size(1133, 428);
-            this.DailyReportDataGridView.TabIndex = 1;
+            this.dataGridDailyReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridDailyReport.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridDailyReport.Location = new System.Drawing.Point(8, 38);
+            this.dataGridDailyReport.Name = "dataGridDailyReport";
+            this.dataGridDailyReport.ReadOnly = true;
+            this.dataGridDailyReport.RowHeadersWidth = 51;
+            this.dataGridDailyReport.RowTemplate.Height = 24;
+            this.dataGridDailyReport.Size = new System.Drawing.Size(1133, 428);
+            this.dataGridDailyReport.TabIndex = 1;
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.SortByEarningButton);
-            this.tabPage5.Controls.Add(this.SortByVisitorsButton);
-            this.tabPage5.Controls.Add(this.WeeklyReportButton);
-            this.tabPage5.Controls.Add(this.WeeklyReportDataGridView);
+            this.tabPage5.Controls.Add(this.btnGenerateWeeklyReport);
+            this.tabPage5.Controls.Add(this.dataGridWeeklyReport);
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
@@ -569,55 +535,17 @@ namespace Coursework
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Weekly Report";
             this.tabPage5.UseVisualStyleBackColor = true;
-            this.tabPage5.Click += new System.EventHandler(this.tabPage5_Click);
             // 
-            // SortByEarningButton
+            // dataGridWeeklyReport
             // 
-            this.SortByEarningButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.SortByEarningButton.Font = new System.Drawing.Font("Lucida Calligraphy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SortByEarningButton.ForeColor = System.Drawing.Color.White;
-            this.SortByEarningButton.Location = new System.Drawing.Point(791, 563);
-            this.SortByEarningButton.Name = "SortByEarningButton";
-            this.SortByEarningButton.Size = new System.Drawing.Size(283, 41);
-            this.SortByEarningButton.TabIndex = 20;
-            this.SortByEarningButton.Text = "Sort by Earning";
-            this.SortByEarningButton.UseVisualStyleBackColor = false;
-            // 
-            // SortByVisitorsButton
-            // 
-            this.SortByVisitorsButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.SortByVisitorsButton.Font = new System.Drawing.Font("Lucida Calligraphy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SortByVisitorsButton.ForeColor = System.Drawing.Color.White;
-            this.SortByVisitorsButton.Location = new System.Drawing.Point(791, 516);
-            this.SortByVisitorsButton.Name = "SortByVisitorsButton";
-            this.SortByVisitorsButton.Size = new System.Drawing.Size(283, 41);
-            this.SortByVisitorsButton.TabIndex = 19;
-            this.SortByVisitorsButton.Text = "Sort by Visitors";
-            this.SortByVisitorsButton.UseVisualStyleBackColor = false;
-            // 
-            // WeeklyReportButton
-            // 
-            this.WeeklyReportButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.WeeklyReportButton.Font = new System.Drawing.Font("Lucida Calligraphy", 13.8F, System.Drawing.FontStyle.Bold);
-            this.WeeklyReportButton.ForeColor = System.Drawing.Color.White;
-            this.WeeklyReportButton.Location = new System.Drawing.Point(166, 516);
-            this.WeeklyReportButton.Name = "WeeklyReportButton";
-            this.WeeklyReportButton.Size = new System.Drawing.Size(383, 88);
-            this.WeeklyReportButton.TabIndex = 17;
-            this.WeeklyReportButton.Text = "Generate Weekly Report";
-            this.WeeklyReportButton.UseVisualStyleBackColor = false;
-            this.WeeklyReportButton.Click += new System.EventHandler(this.WeeklyReportButton_Click);
-            // 
-            // WeeklyReportDataGridView
-            // 
-            this.WeeklyReportDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.WeeklyReportDataGridView.Location = new System.Drawing.Point(8, 42);
-            this.WeeklyReportDataGridView.Name = "WeeklyReportDataGridView";
-            this.WeeklyReportDataGridView.RowHeadersWidth = 51;
-            this.WeeklyReportDataGridView.RowTemplate.Height = 24;
-            this.WeeklyReportDataGridView.Size = new System.Drawing.Size(1133, 429);
-            this.WeeklyReportDataGridView.TabIndex = 1;
-            this.WeeklyReportDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.WeeklyReportDataGridView_CellContentClick);
+            this.dataGridWeeklyReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridWeeklyReport.Location = new System.Drawing.Point(8, 39);
+            this.dataGridWeeklyReport.Name = "dataGridWeeklyReport";
+            this.dataGridWeeklyReport.RowHeadersWidth = 51;
+            this.dataGridWeeklyReport.RowTemplate.Height = 24;
+            this.dataGridWeeklyReport.Size = new System.Drawing.Size(1133, 429);
+            this.dataGridWeeklyReport.TabIndex = 1;
+            this.dataGridWeeklyReport.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.WeeklyReportDataGridView_CellContentClick);
             // 
             // tabPage4
             // 
@@ -655,20 +583,19 @@ namespace Coursework
             this.label6.Size = new System.Drawing.Size(138, 17);
             this.label6.TabIndex = 12;
             this.label6.Text = "Visitor Chart";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // chartEarning
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartEarning.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartEarning.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.chartEarning.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartEarning.Legends.Add(legend3);
             this.chartEarning.Location = new System.Drawing.Point(617, 57);
             this.chartEarning.Name = "chartEarning";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartEarning.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chartEarning.Series.Add(series3);
             this.chartEarning.Size = new System.Drawing.Size(503, 416);
             this.chartEarning.TabIndex = 2;
             this.chartEarning.Text = "chart2";
@@ -686,19 +613,43 @@ namespace Coursework
             // 
             // chartVisitor
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartVisitor.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartVisitor.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            this.chartVisitor.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartVisitor.Legends.Add(legend4);
             this.chartVisitor.Location = new System.Drawing.Point(37, 57);
             this.chartVisitor.Name = "chartVisitor";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartVisitor.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chartVisitor.Series.Add(series4);
             this.chartVisitor.Size = new System.Drawing.Size(504, 416);
             this.chartVisitor.TabIndex = 0;
             this.chartVisitor.Text = "chart1";
+            // 
+            // btnGenerateDailyReport
+            // 
+            this.btnGenerateDailyReport.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateDailyReport.Location = new System.Drawing.Point(385, 529);
+            this.btnGenerateDailyReport.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGenerateDailyReport.Name = "btnGenerateDailyReport";
+            this.btnGenerateDailyReport.Size = new System.Drawing.Size(335, 52);
+            this.btnGenerateDailyReport.TabIndex = 16;
+            this.btnGenerateDailyReport.Text = "Generate Daily Report";
+            this.btnGenerateDailyReport.UseVisualStyleBackColor = true;
+            this.btnGenerateDailyReport.Click += new System.EventHandler(this.btnGenerateDailyReport_Click);
+            // 
+            // btnGenerateWeeklyReport
+            // 
+            this.btnGenerateWeeklyReport.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateWeeklyReport.Location = new System.Drawing.Point(380, 542);
+            this.btnGenerateWeeklyReport.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGenerateWeeklyReport.Name = "btnGenerateWeeklyReport";
+            this.btnGenerateWeeklyReport.Size = new System.Drawing.Size(335, 52);
+            this.btnGenerateWeeklyReport.TabIndex = 18;
+            this.btnGenerateWeeklyReport.Text = "Generate Weekly Report";
+            this.btnGenerateWeeklyReport.UseVisualStyleBackColor = true;
+            this.btnGenerateWeeklyReport.Click += new System.EventHandler(this.btnGenerateWeeklyReport_Click_1);
             // 
             // Home
             // 
@@ -712,18 +663,18 @@ namespace Coursework
             this.Load += new System.EventHandler(this.tabPage5_Load);
             this.tabHomePage.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.pnlIssueTicket.ResumeLayout(false);
+            this.pnlIssueTicket.PerformLayout();
+            this.pnlAgeRadioGroup.ResumeLayout(false);
+            this.pnlAgeRadioGroup.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridEntryForm)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTicketRates)).EndInit();
             this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DailyReportDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDailyReport)).EndInit();
             this.tabPage5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.WeeklyReportDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridWeeklyReport)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartEarning)).EndInit();
@@ -746,43 +697,40 @@ namespace Coursework
         private System.Windows.Forms.DataGridView dataGridTicketRates;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Button btnTicketExport;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.RadioButton radioAdult;
-        private System.Windows.Forms.RadioButton radioChild;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtVisitorID;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker DatePicker;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel pnlIssueTicket;
+        private System.Windows.Forms.Panel pnlAgeRadioGroup;
+        private System.Windows.Forms.RadioButton radioBtnAdult;
+        private System.Windows.Forms.RadioButton radioBtnChild;
+        private System.Windows.Forms.Label lblAge;
+        private System.Windows.Forms.Label lblVisitorId;
+        private System.Windows.Forms.Label lblPhoneNumber;
+        private System.Windows.Forms.TextBox txtBoxVisitorId;
+        private System.Windows.Forms.Label lblFullName;
+        private System.Windows.Forms.DateTimePicker datePickerDate;
+        private System.Windows.Forms.DataGridView dataGridEntryForm;
         private System.Windows.Forms.Label lblTicket;
-        private System.Windows.Forms.TextBox txtEntryTime;
+        private System.Windows.Forms.TextBox txtBoxEntryTime;
         private System.Windows.Forms.Label lblEntryTime;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboGroupBy;
-        private System.Windows.Forms.TextBox txtPhone;
-        private System.Windows.Forms.TextBox txtFullName;
-        private System.Windows.Forms.Button btnTicket;
-        private System.Windows.Forms.TextBox txtOutTime;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label lblGroup;
+        private System.Windows.Forms.ComboBox comboBoxGroupBy;
+        private System.Windows.Forms.TextBox txtBoxPhone;
+        private System.Windows.Forms.TextBox txtBoxFullName;
+        private System.Windows.Forms.Button btnIssueTicket;
+        private System.Windows.Forms.TextBox txtBoxOutTime;
         private System.Windows.Forms.Label lblOutTime;
-        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.TextBox txtBoxPrice;
         private System.Windows.Forms.Label lblPrice;
-        private System.Windows.Forms.Button DailyReportButton;
-        private System.Windows.Forms.DataGridView DailyReportDataGridView;
-        private System.Windows.Forms.Button SortByEarningButton;
-        private System.Windows.Forms.Button SortByVisitorsButton;
-        private System.Windows.Forms.Button WeeklyReportButton;
-        private System.Windows.Forms.DataGridView WeeklyReportDataGridView;
-        private System.Windows.Forms.Button btnImportDailyReport;
+        private System.Windows.Forms.DataGridView dataGridDailyReport;
+        private System.Windows.Forms.DataGridView dataGridWeeklyReport;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartEarning;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblDuration;
         private System.Windows.Forms.ComboBox comboBoxDuration;
-        private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.Button btnGenerateDailyReport;
+        private System.Windows.Forms.Button btnGenerateWeeklyReport;
     }
 }
 
