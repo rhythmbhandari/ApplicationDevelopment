@@ -8,6 +8,7 @@ namespace Coursework
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -32,6 +33,9 @@ namespace Coursework
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabHomePage = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -56,13 +60,6 @@ namespace Coursework
             this.txtVisitorID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.DatePicker = new System.Windows.Forms.DateTimePicker();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.GeneratePriceBtn = new System.Windows.Forms.Button();
-            this.ExitTimeText = new System.Windows.Forms.TextBox();
-            this.UserCodeText = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.GroupOfBox = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.lblTicket = new System.Windows.Forms.Label();
@@ -71,20 +68,34 @@ namespace Coursework
             this.btnTicketImport = new System.Windows.Forms.Button();
             this.dataGridTicketRates = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnImportDailyReport = new System.Windows.Forms.Button();
+            this.DailyReportButton = new System.Windows.Forms.Button();
+            this.DailyReportDataGridView = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.SortByEarningButton = new System.Windows.Forms.Button();
+            this.SortByVisitorsButton = new System.Windows.Forms.Button();
+            this.WeeklyReportButton = new System.Windows.Forms.Button();
+            this.WeeklyReportDataGridView = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.btnLoad = new System.Windows.Forms.Button();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartVisitor = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartEarning = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabHomePage.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTicketRates)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DailyReportDataGridView)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WeeklyReportDataGridView)).BeginInit();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartVisitor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEarning)).BeginInit();
             this.SuspendLayout();
             // 
             // tabHomePage
@@ -104,8 +115,6 @@ namespace Coursework
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Controls.Add(this.panel2);
-            this.tabPage1.Controls.Add(this.GroupOfBox);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
@@ -242,7 +251,7 @@ namespace Coursework
             // 
             this.comboGroupBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboGroupBy.Items.AddRange(new object[] {
-            "Single ",
+            "Single",
             "Group of 5",
             "Group of 10",
             "Group of 15"});
@@ -369,86 +378,14 @@ namespace Coursework
             this.DatePicker.Size = new System.Drawing.Size(240, 22);
             this.DatePicker.TabIndex = 15;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.GeneratePriceBtn);
-            this.panel2.Controls.Add(this.ExitTimeText);
-            this.panel2.Controls.Add(this.UserCodeText);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Location = new System.Drawing.Point(52, 386);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(323, 366);
-            this.panel2.TabIndex = 19;
-            // 
-            // GeneratePriceBtn
-            // 
-            this.GeneratePriceBtn.Location = new System.Drawing.Point(36, 196);
-            this.GeneratePriceBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.GeneratePriceBtn.Name = "GeneratePriceBtn";
-            this.GeneratePriceBtn.Size = new System.Drawing.Size(133, 57);
-            this.GeneratePriceBtn.TabIndex = 3;
-            this.GeneratePriceBtn.Text = "Generate Price";
-            this.GeneratePriceBtn.UseVisualStyleBackColor = true;
-            // 
-            // ExitTimeText
-            // 
-            this.ExitTimeText.Location = new System.Drawing.Point(36, 130);
-            this.ExitTimeText.Margin = new System.Windows.Forms.Padding(4);
-            this.ExitTimeText.Name = "ExitTimeText";
-            this.ExitTimeText.Size = new System.Drawing.Size(132, 22);
-            this.ExitTimeText.TabIndex = 2;
-            // 
-            // UserCodeText
-            // 
-            this.UserCodeText.Location = new System.Drawing.Point(36, 46);
-            this.UserCodeText.Margin = new System.Windows.Forms.Padding(4);
-            this.UserCodeText.Name = "UserCodeText";
-            this.UserCodeText.Size = new System.Drawing.Size(132, 22);
-            this.UserCodeText.TabIndex = 1;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(32, 111);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 17);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Exit Time";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(32, 26);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(75, 17);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "User Code";
-            // 
-            // GroupOfBox
-            // 
-            this.GroupOfBox.Items.AddRange(new object[] {
-            "Single ",
-            "Group of Five",
-            "Group of Ten",
-            "Group of Fifteen"});
-            this.GroupOfBox.Location = new System.Drawing.Point(215, 354);
-            this.GroupOfBox.Margin = new System.Windows.Forms.Padding(4);
-            this.GroupOfBox.Name = "GroupOfBox";
-            this.GroupOfBox.Size = new System.Drawing.Size(160, 24);
-            this.GroupOfBox.TabIndex = 18;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(437, 347);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 303);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 44;
-            this.dataGridView1.Size = new System.Drawing.Size(688, 294);
+            this.dataGridView1.Size = new System.Drawing.Size(1131, 334);
             this.dataGridView1.TabIndex = 3;
             // 
             // tabPage2
@@ -520,6 +457,9 @@ namespace Coursework
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnImportDailyReport);
+            this.tabPage3.Controls.Add(this.DailyReportButton);
+            this.tabPage3.Controls.Add(this.DailyReportDataGridView);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -528,8 +468,46 @@ namespace Coursework
             this.tabPage3.Text = "Daily Report";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // btnImportDailyReport
+            // 
+            this.btnImportDailyReport.Location = new System.Drawing.Point(77, 517);
+            this.btnImportDailyReport.Margin = new System.Windows.Forms.Padding(4);
+            this.btnImportDailyReport.Name = "btnImportDailyReport";
+            this.btnImportDailyReport.Size = new System.Drawing.Size(237, 52);
+            this.btnImportDailyReport.TabIndex = 15;
+            this.btnImportDailyReport.Text = "Import";
+            this.btnImportDailyReport.UseVisualStyleBackColor = true;
+            this.btnImportDailyReport.Click += new System.EventHandler(this.btnImportDailyReport_Click);
+            // 
+            // DailyReportButton
+            // 
+            this.DailyReportButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.DailyReportButton.Font = new System.Drawing.Font("Lucida Calligraphy", 13.8F, System.Drawing.FontStyle.Bold);
+            this.DailyReportButton.ForeColor = System.Drawing.Color.White;
+            this.DailyReportButton.Location = new System.Drawing.Point(361, 517);
+            this.DailyReportButton.Name = "DailyReportButton";
+            this.DailyReportButton.Size = new System.Drawing.Size(401, 72);
+            this.DailyReportButton.TabIndex = 14;
+            this.DailyReportButton.Text = "Generate Daily Report";
+            this.DailyReportButton.UseVisualStyleBackColor = false;
+            this.DailyReportButton.Click += new System.EventHandler(this.DailyReportButton_Click);
+            // 
+            // DailyReportDataGridView
+            // 
+            this.DailyReportDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DailyReportDataGridView.Location = new System.Drawing.Point(8, 38);
+            this.DailyReportDataGridView.Name = "DailyReportDataGridView";
+            this.DailyReportDataGridView.RowHeadersWidth = 51;
+            this.DailyReportDataGridView.RowTemplate.Height = 24;
+            this.DailyReportDataGridView.Size = new System.Drawing.Size(1133, 428);
+            this.DailyReportDataGridView.TabIndex = 1;
+            // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.SortByEarningButton);
+            this.tabPage5.Controls.Add(this.SortByVisitorsButton);
+            this.tabPage5.Controls.Add(this.WeeklyReportButton);
+            this.tabPage5.Controls.Add(this.WeeklyReportDataGridView);
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
@@ -537,11 +515,63 @@ namespace Coursework
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Weekly Report";
             this.tabPage5.UseVisualStyleBackColor = true;
+            this.tabPage5.Click += new System.EventHandler(this.tabPage5_Click);
+            // 
+            // SortByEarningButton
+            // 
+            this.SortByEarningButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.SortByEarningButton.Font = new System.Drawing.Font("Lucida Calligraphy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SortByEarningButton.ForeColor = System.Drawing.Color.White;
+            this.SortByEarningButton.Location = new System.Drawing.Point(791, 563);
+            this.SortByEarningButton.Name = "SortByEarningButton";
+            this.SortByEarningButton.Size = new System.Drawing.Size(283, 41);
+            this.SortByEarningButton.TabIndex = 20;
+            this.SortByEarningButton.Text = "Sort by Earning";
+            this.SortByEarningButton.UseVisualStyleBackColor = false;
+            // 
+            // SortByVisitorsButton
+            // 
+            this.SortByVisitorsButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.SortByVisitorsButton.Font = new System.Drawing.Font("Lucida Calligraphy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SortByVisitorsButton.ForeColor = System.Drawing.Color.White;
+            this.SortByVisitorsButton.Location = new System.Drawing.Point(791, 516);
+            this.SortByVisitorsButton.Name = "SortByVisitorsButton";
+            this.SortByVisitorsButton.Size = new System.Drawing.Size(283, 41);
+            this.SortByVisitorsButton.TabIndex = 19;
+            this.SortByVisitorsButton.Text = "Sort by Visitors";
+            this.SortByVisitorsButton.UseVisualStyleBackColor = false;
+            // 
+            // WeeklyReportButton
+            // 
+            this.WeeklyReportButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.WeeklyReportButton.Font = new System.Drawing.Font("Lucida Calligraphy", 13.8F, System.Drawing.FontStyle.Bold);
+            this.WeeklyReportButton.ForeColor = System.Drawing.Color.White;
+            this.WeeklyReportButton.Location = new System.Drawing.Point(166, 516);
+            this.WeeklyReportButton.Name = "WeeklyReportButton";
+            this.WeeklyReportButton.Size = new System.Drawing.Size(383, 88);
+            this.WeeklyReportButton.TabIndex = 17;
+            this.WeeklyReportButton.Text = "Generate Weekly Report";
+            this.WeeklyReportButton.UseVisualStyleBackColor = false;
+            this.WeeklyReportButton.Click += new System.EventHandler(this.WeeklyReportButton_Click);
+            // 
+            // WeeklyReportDataGridView
+            // 
+            this.WeeklyReportDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.WeeklyReportDataGridView.Location = new System.Drawing.Point(8, 42);
+            this.WeeklyReportDataGridView.Name = "WeeklyReportDataGridView";
+            this.WeeklyReportDataGridView.RowHeadersWidth = 51;
+            this.WeeklyReportDataGridView.RowTemplate.Height = 24;
+            this.WeeklyReportDataGridView.Size = new System.Drawing.Size(1133, 429);
+            this.WeeklyReportDataGridView.TabIndex = 1;
+            this.WeeklyReportDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.WeeklyReportDataGridView_CellContentClick);
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.label8);
+            this.tabPage4.Controls.Add(this.label6);
+            this.tabPage4.Controls.Add(this.chartEarning);
             this.tabPage4.Controls.Add(this.btnLoad);
-            this.tabPage4.Controls.Add(this.chart1);
+            this.tabPage4.Controls.Add(this.chartVisitor);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -552,28 +582,68 @@ namespace Coursework
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(393, 429);
+            this.btnLoad.Location = new System.Drawing.Point(452, 465);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(236, 33);
             this.btnLoad.TabIndex = 1;
             this.btnLoad.Text = "Load";
             this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
-            // chart1
+            // chartVisitor
             // 
             chartArea8.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea8);
+            this.chartVisitor.ChartAreas.Add(chartArea8);
             legend8.Name = "Legend1";
-            this.chart1.Legends.Add(legend8);
-            this.chart1.Location = new System.Drawing.Point(231, 26);
-            this.chart1.Name = "chart1";
+            this.chartVisitor.Legends.Add(legend8);
+            this.chartVisitor.Location = new System.Drawing.Point(38, 41);
+            this.chartVisitor.Name = "chartVisitor";
             series8.ChartArea = "ChartArea1";
             series8.Legend = "Legend1";
             series8.Name = "Series1";
-            this.chart1.Series.Add(series8);
-            this.chart1.Size = new System.Drawing.Size(670, 352);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
+            this.chartVisitor.Series.Add(series8);
+            this.chartVisitor.Size = new System.Drawing.Size(457, 352);
+            this.chartVisitor.TabIndex = 0;
+            this.chartVisitor.Text = "chart1";
+            // 
+            // chartEarning
+            // 
+            chartArea7.Name = "ChartArea1";
+            this.chartEarning.ChartAreas.Add(chartArea7);
+            legend7.Name = "Legend1";
+            this.chartEarning.Legends.Add(legend7);
+            this.chartEarning.Location = new System.Drawing.Point(665, 41);
+            this.chartEarning.Name = "chartEarning";
+            series7.ChartArea = "ChartArea1";
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            this.chartEarning.Series.Add(series7);
+            this.chartEarning.Size = new System.Drawing.Size(457, 352);
+            this.chartEarning.TabIndex = 2;
+            this.chartEarning.Text = "chart2";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(165, 407);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(138, 17);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Visitor Chart";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(793, 407);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(138, 17);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Earning Chart";
             // 
             // Home
             // 
@@ -584,20 +654,25 @@ namespace Coursework
             this.MaximizeBox = false;
             this.Name = "Home";
             this.Text = "Home";
+            this.Load += new System.EventHandler(this.tabPage5_Load);
             this.tabHomePage.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTicketRates)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DailyReportDataGridView)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.WeeklyReportDataGridView)).EndInit();
             this.tabPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartVisitor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEarning)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -610,7 +685,7 @@ namespace Coursework
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Button btnLoad;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartVisitor;
         private System.Windows.Forms.Button btnTicketEdit;
         private System.Windows.Forms.Button btnTicketImport;
         private System.Windows.Forms.DataGridView dataGridTicketRates;
@@ -636,18 +711,20 @@ namespace Coursework
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.TextBox txtFullName;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button GeneratePriceBtn;
-        private System.Windows.Forms.TextBox ExitTimeText;
-        private System.Windows.Forms.TextBox UserCodeText;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox GroupOfBox;
         private System.Windows.Forms.TextBox txtOutTime;
         private System.Windows.Forms.Label lblOutTime;
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label lblPrice;
-
+        private System.Windows.Forms.Button DailyReportButton;
+        private System.Windows.Forms.DataGridView DailyReportDataGridView;
+        private System.Windows.Forms.Button SortByEarningButton;
+        private System.Windows.Forms.Button SortByVisitorsButton;
+        private System.Windows.Forms.Button WeeklyReportButton;
+        private System.Windows.Forms.DataGridView WeeklyReportDataGridView;
+        private System.Windows.Forms.Button btnImportDailyReport;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartEarning;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
     }
 }
 
