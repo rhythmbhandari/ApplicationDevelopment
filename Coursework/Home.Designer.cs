@@ -71,8 +71,10 @@ namespace Coursework
             this.btnTicketImport = new System.Windows.Forms.Button();
             this.dataGridTicketRates = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnGenerateDailyReport = new System.Windows.Forms.Button();
             this.dataGridDailyReport = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btnGenerateWeeklyReport = new System.Windows.Forms.Button();
             this.dataGridWeeklyReport = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
@@ -80,8 +82,8 @@ namespace Coursework
             this.chartEarning = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnGenerateVisitorChart = new System.Windows.Forms.Button();
             this.chartVisitor = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnGenerateDailyReport = new System.Windows.Forms.Button();
-            this.btnGenerateWeeklyReport = new System.Windows.Forms.Button();
+            this.btnSortVisitors = new System.Windows.Forms.Button();
+            this.btnSortEarnings = new System.Windows.Forms.Button();
             this.tabHomePage.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.pnlIssueTicket.SuspendLayout();
@@ -512,6 +514,18 @@ namespace Coursework
             this.tabPage3.Text = "Daily Report";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // btnGenerateDailyReport
+            // 
+            this.btnGenerateDailyReport.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateDailyReport.Location = new System.Drawing.Point(385, 529);
+            this.btnGenerateDailyReport.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGenerateDailyReport.Name = "btnGenerateDailyReport";
+            this.btnGenerateDailyReport.Size = new System.Drawing.Size(335, 52);
+            this.btnGenerateDailyReport.TabIndex = 16;
+            this.btnGenerateDailyReport.Text = "Generate Daily Report";
+            this.btnGenerateDailyReport.UseVisualStyleBackColor = true;
+            this.btnGenerateDailyReport.Click += new System.EventHandler(this.btnGenerateDailyReport_Click);
+            // 
             // dataGridDailyReport
             // 
             this.dataGridDailyReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -526,6 +540,8 @@ namespace Coursework
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.btnSortEarnings);
+            this.tabPage5.Controls.Add(this.btnSortVisitors);
             this.tabPage5.Controls.Add(this.btnGenerateWeeklyReport);
             this.tabPage5.Controls.Add(this.dataGridWeeklyReport);
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
@@ -535,6 +551,18 @@ namespace Coursework
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Weekly Report";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // btnGenerateWeeklyReport
+            // 
+            this.btnGenerateWeeklyReport.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateWeeklyReport.Location = new System.Drawing.Point(9, 530);
+            this.btnGenerateWeeklyReport.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGenerateWeeklyReport.Name = "btnGenerateWeeklyReport";
+            this.btnGenerateWeeklyReport.Size = new System.Drawing.Size(335, 52);
+            this.btnGenerateWeeklyReport.TabIndex = 18;
+            this.btnGenerateWeeklyReport.Text = "Generate Weekly Report";
+            this.btnGenerateWeeklyReport.UseVisualStyleBackColor = true;
+            this.btnGenerateWeeklyReport.Click += new System.EventHandler(this.btnGenerateWeeklyReport_Click_1);
             // 
             // dataGridWeeklyReport
             // 
@@ -627,29 +655,29 @@ namespace Coursework
             this.chartVisitor.TabIndex = 0;
             this.chartVisitor.Text = "chart1";
             // 
-            // btnGenerateDailyReport
+            // btnSortVisitors
             // 
-            this.btnGenerateDailyReport.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerateDailyReport.Location = new System.Drawing.Point(385, 529);
-            this.btnGenerateDailyReport.Margin = new System.Windows.Forms.Padding(4);
-            this.btnGenerateDailyReport.Name = "btnGenerateDailyReport";
-            this.btnGenerateDailyReport.Size = new System.Drawing.Size(335, 52);
-            this.btnGenerateDailyReport.TabIndex = 16;
-            this.btnGenerateDailyReport.Text = "Generate Daily Report";
-            this.btnGenerateDailyReport.UseVisualStyleBackColor = true;
-            this.btnGenerateDailyReport.Click += new System.EventHandler(this.btnGenerateDailyReport_Click);
+            this.btnSortVisitors.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSortVisitors.Location = new System.Drawing.Point(805, 491);
+            this.btnSortVisitors.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSortVisitors.Name = "btnSortVisitors";
+            this.btnSortVisitors.Size = new System.Drawing.Size(335, 52);
+            this.btnSortVisitors.TabIndex = 19;
+            this.btnSortVisitors.Text = "Sort by total visitors";
+            this.btnSortVisitors.UseVisualStyleBackColor = true;
+            this.btnSortVisitors.Click += new System.EventHandler(this.btnSortVisitors_Click);
             // 
-            // btnGenerateWeeklyReport
+            // btnSortEarnings
             // 
-            this.btnGenerateWeeklyReport.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerateWeeklyReport.Location = new System.Drawing.Point(380, 542);
-            this.btnGenerateWeeklyReport.Margin = new System.Windows.Forms.Padding(4);
-            this.btnGenerateWeeklyReport.Name = "btnGenerateWeeklyReport";
-            this.btnGenerateWeeklyReport.Size = new System.Drawing.Size(335, 52);
-            this.btnGenerateWeeklyReport.TabIndex = 18;
-            this.btnGenerateWeeklyReport.Text = "Generate Weekly Report";
-            this.btnGenerateWeeklyReport.UseVisualStyleBackColor = true;
-            this.btnGenerateWeeklyReport.Click += new System.EventHandler(this.btnGenerateWeeklyReport_Click_1);
+            this.btnSortEarnings.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSortEarnings.Location = new System.Drawing.Point(805, 567);
+            this.btnSortEarnings.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSortEarnings.Name = "btnSortEarnings";
+            this.btnSortEarnings.Size = new System.Drawing.Size(335, 52);
+            this.btnSortEarnings.TabIndex = 20;
+            this.btnSortEarnings.Text = "Sort by total earnings";
+            this.btnSortEarnings.UseVisualStyleBackColor = true;
+            this.btnSortEarnings.Click += new System.EventHandler(this.btnSortEarnings_Click);
             // 
             // Home
             // 
@@ -731,6 +759,8 @@ namespace Coursework
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.Button btnGenerateDailyReport;
         private System.Windows.Forms.Button btnGenerateWeeklyReport;
+        private System.Windows.Forms.Button btnSortEarnings;
+        private System.Windows.Forms.Button btnSortVisitors;
     }
 }
 

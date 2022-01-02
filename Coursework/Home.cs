@@ -19,8 +19,9 @@ namespace Coursework
         XmlSerializer xmlSerializer;
         //List<TicketPriceDataList> ticketPricesDataList;
 
-        //XmlSerializer xmlSerializer2;
+        XmlSerializer xmlSerializerDailyReport;
         List<VisitorDetails> visitorsDetails;
+        List<VisitorDetails> visitorsDetailsDailyReport;
 
         String currentDate = DateTime.Now.ToString("yyyy-MM-dd");
 
@@ -31,7 +32,10 @@ namespace Coursework
             xmlSerializer = new XmlSerializer(typeof(List<VisitorDetails>));
 
             visitorsDetails = new List<VisitorDetails>();
-            //xmlSerializer2 = new XmlSerializer(typeof(List<VisitorDetails>));
+
+
+            xmlSerializerDailyReport = new XmlSerializer(typeof(List<VisitorDetails>));
+            visitorsDetailsDailyReport = new List<VisitorDetails>();
             comboBoxDuration.Text = "1";
             comboBoxGroupBy.Text = "Single";
             txtBoxEntryTime.Text = DateTime.Now.ToString("t");
@@ -323,9 +327,9 @@ namespace Coursework
 
             try
             {
-                var vistor = xmlSerializer.Deserialize(fileStream);
+                var vistor = xmlSerializerDailyReport.Deserialize(fileStream);
 
-                visitorsDetails = (List<VisitorDetails>)vistor;
+                visitorsDetailsDailyReport = (List<VisitorDetails>)vistor;
 
                 DataTable data = new DataTable();
 
@@ -361,28 +365,11 @@ namespace Coursework
             FileStream fileStream = new FileStream(location.dataFile, FileMode.Open, FileAccess.Read);
 
             try
+              
             {
-                var visitor2 = xmlSerializer.Deserialize(fileStream);
+                DataTable data;
 
-                visitorsDetails = (List<VisitorDetails>)visitor2;
-
-                DataTable data = new DataTable();
-
-                data.Columns.Add("Day");
-                data.Columns.Add("Total Visitor");
-                data.Columns.Add("Total Earning");
-
-                int date = ((int)DateTime.Parse(currentDate).DayOfWeek);
-                String Date1 = (DateTime.Parse(currentDate).AddDays(-date)).ToString("yyyy-MM-dd");
-                String Date2 = (DateTime.Parse(currentDate).AddDays((7 - date))).ToString("yyyy-MM-dd");
-
-                data.Rows.Add("Sunday", visitorCalculator(Date1), totalPrice(Date1));
-                data.Rows.Add("Monday", visitorCalculator(DateTime.Parse(Date1).AddDays(1).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(1).ToString("yyyy-MM-dd")));
-                data.Rows.Add("Tuesday", visitorCalculator(DateTime.Parse(Date1).AddDays(2).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(2).ToString("yyyy-MM-dd")));
-                data.Rows.Add("Wednesday", visitorCalculator(DateTime.Parse(Date1).AddDays(3).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(3).ToString("yyyy-MM-dd")));
-                data.Rows.Add("Thursday", visitorCalculator(DateTime.Parse(Date1).AddDays(4).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(4).ToString("yyyy-MM-dd")));
-                data.Rows.Add("Friday", visitorCalculator(DateTime.Parse(Date1).AddDays(5).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(5).ToString("yyyy-MM-dd")));
-                data.Rows.Add("Saturday", visitorCalculator(Date2), totalPrice(Date2));
+                data = chartRowAdder(fileStream);
 
                 dataGridWeeklyReport.DataSource = data;
 
@@ -394,5 +381,81 @@ namespace Coursework
 
             }
         }
+
+        private void btnSortVisitors_Click(object sender, EventArgs e)
+        {
+            visitorsDetails = new List<VisitorDetails>();
+
+            FileStream fileStream = new FileStream(location.dataFile, FileMode.Open, FileAccess.Read);
+
+            try
+            {
+
+                DataTable data;
+
+                data = chartRowAdder(fileStream);
+
+                data = BubbleSortingAlgorithm(data, "Total Visitor");
+
+                dataGridWeeklyReport.DataSource = data;
+
+                fileStream.Close();
+            }
+            catch (Exception e4)
+            {
+                fileStream.Close();
+            }
+        }
+
+        private void btnSortEarnings_Click(object sender, EventArgs e)
+        {
+            visitorsDetails = new List<VisitorDetails>();
+
+            FileStream fileStream = new FileStream(location.dataFile, FileMode.Open, FileAccess.Read);
+
+            try
+            {
+                DataTable data;
+
+                data = chartRowAdder(fileStream);
+
+                data = BubbleSortingAlgorithm(data, "Total Earning");
+
+                dataGridWeeklyReport.DataSource = data;
+
+                fileStream.Close();
+            }
+            catch (Exception e3)
+            {
+                fileStream.Close();
+            }
+        }
+
+        private DataTable BubbleSortingAlgorithm(DataTable data, String sortBy)
+        {
+            for (int i = data.Rows.Count - 1; i > 0; i--)
+            {
+                for (int j = 0; j <= i - 1; j++)
+                {
+                    if (Convert.ToInt32(data.Rows[j][sortBy]) > Convert.ToInt32(data.Rows[j + 1][sortBy]))
+                    {
+                        var totalEarning = data.Rows[j]["Total Earning"];
+                        var totalVisitor = data.Rows[j]["Total Visitor"];
+                        var days = data.Rows[j]["Day"];
+
+                        data.Rows[j]["Total Earning"] = data.Rows[j + 1]["Total Earning"];
+                        data.Rows[j]["Day"] = data.Rows[j + 1]["Day"];
+                        data.Rows[j]["Total Visitor"] = data.Rows[j + 1]["Total Visitor"];
+
+                        data.Rows[j + 1]["Total Earning"] = totalEarning;
+                        data.Rows[j + 1]["Day"] = days;
+                        data.Rows[j + 1]["Total Visitor"] = totalVisitor;
+
+                    }
+                }
+            }
+            return data;
+        }
     }
+
 }
