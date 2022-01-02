@@ -19,9 +19,8 @@ namespace Coursework
         XmlSerializer xmlSerializer;
         //List<TicketPriceDataList> ticketPricesDataList;
 
-        XmlSerializer xmlSerializer2;
+        //XmlSerializer xmlSerializer2;
         List<VisitorDetails> visitorsDetails;
-        List<VisitorDetails> visitorsDetails2;
 
         String currentDate = DateTime.Now.ToString("yyyy-MM-dd");
 
@@ -32,8 +31,14 @@ namespace Coursework
             xmlSerializer = new XmlSerializer(typeof(List<VisitorDetails>));
 
             visitorsDetails = new List<VisitorDetails>();
-            xmlSerializer2 = new XmlSerializer(typeof(List<VisitorDetails>));
+            //xmlSerializer2 = new XmlSerializer(typeof(List<VisitorDetails>));
+            comboBoxDuration.Text = "1";
+            comboGroupBy.Text = "Single";
             txtEntryTime.Text = DateTime.Now.ToString("t");
+            txtOutTime.Text = DateTime.Now.AddHours(1).ToString("t");
+            txtPrice.Text = "200";
+            radioAdult.Checked = true;
+
             setup();
             txtVisitorID.Text = generateId();
 
@@ -69,7 +74,7 @@ namespace Coursework
             FileStream fileStream = new FileStream(location.dataFile, FileMode.OpenOrCreate, FileAccess.Write);
             try
             {
-                var value = xmlSerializer2.Deserialize(fileStream);
+                var value = xmlSerializer.Deserialize(fileStream);
 
                 visitorsDetails = (List<VisitorDetails>)value;
 
@@ -142,8 +147,10 @@ namespace Coursework
             info.TotalPrice = Int32.Parse(txtPrice.Text);
 
             visitorsDetails.Add(info);
-            xmlSerializer2.Serialize(fileStream2, visitorsDetails);
-            
+            xmlSerializer.Serialize(fileStream2, visitorsDetails);
+
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = visitorsDetails;
             fileStream2.Close();
 
         }
@@ -170,12 +177,10 @@ namespace Coursework
 
                 DataTable data = new DataTable();
 
-                //int Child = visitorsDetails.Where(a => a.Date.ToString("yyyy-MM-dd") == currentDate && (a.Age >= 5 && a.Age <= 12)).Count();
-                int Single = visitorsDetails.Where(a => a.Date.ToString("yyyy-MM-dd") == currentDate && a.GroupNum == "Single").Count();
-                int GroupOf5 = visitorsDetails.Where(a => a.Date.ToString("yyyy-MM-dd") == currentDate && a.GroupNum == "Group of 5").Count();
-                int GroupOf10 = visitorsDetails.Where(a => a.Date.ToString("yyyy-MM-dd") == currentDate && a.GroupNum == "Group of 10").Count();
-                int GroupOf15 = visitorsDetails.Where(a => a.Date.ToString("yyyy-MM-dd") == currentDate && a.GroupNum == "Group of 15").Count();
-                //int GroupOf20 = visitorsDetails.Where(a => a.Date.ToString("yyyy-MM-dd") == currentDate && a.GroupNum == "Group of 15").Count();
+                int Single = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == currentDate && visitorDetail.GroupNum == "Single").Count();
+                int GroupOf5 = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == currentDate && visitorDetail.GroupNum == "Group of 5").Count();
+                int GroupOf10 = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == currentDate && visitorDetail.GroupNum == "Group of 10").Count();
+                int GroupOf15 = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == currentDate && visitorDetail.GroupNum == "Group of 15").Count();
 
                 data.Columns.Add("Name");
                 data.Columns.Add("Count");
@@ -205,9 +210,9 @@ namespace Coursework
 
             try
             {
-                var visitor2 = xmlSerializer2.Deserialize(fileStream);
+                var visitor2 = xmlSerializer.Deserialize(fileStream);
 
-                visitorsDetails2 = (List<VisitorDetails>)visitor2;
+                visitorsDetails = (List<VisitorDetails>)visitor2;
 
                 DataTable data = new DataTable();
 
@@ -219,13 +224,13 @@ namespace Coursework
                 String Date1 = (DateTime.Parse(currentDate).AddDays(-date)).ToString("yyyy-MM-dd");
                 String Date2 = (DateTime.Parse(currentDate).AddDays((7 - date))).ToString("yyyy-MM-dd");
 
-                data.Rows.Add("Sunday", calc(Date1), totalPrice(Date1));
-                data.Rows.Add("Monday", calc(DateTime.Parse(Date1).AddDays(1).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(1).ToString("yyyy-MM-dd")));
-                data.Rows.Add("Tuesday", calc(DateTime.Parse(Date1).AddDays(2).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(2).ToString("yyyy-MM-dd")));
-                data.Rows.Add("Wednesday", calc(DateTime.Parse(Date1).AddDays(3).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(3).ToString("yyyy-MM-dd")));
-                data.Rows.Add("Thursday", calc(DateTime.Parse(Date1).AddDays(4).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(4).ToString("yyyy-MM-dd")));
-                data.Rows.Add("Friday", calc(DateTime.Parse(Date1).AddDays(5).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(5).ToString("yyyy-MM-dd")));
-                data.Rows.Add("Saturday", calc(Date2), totalPrice(Date2));
+                data.Rows.Add("Sunday", visitorCalculator(Date1), totalPrice(Date1));
+                data.Rows.Add("Monday", visitorCalculator(DateTime.Parse(Date1).AddDays(1).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(1).ToString("yyyy-MM-dd")));
+                data.Rows.Add("Tuesday", visitorCalculator(DateTime.Parse(Date1).AddDays(2).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(2).ToString("yyyy-MM-dd")));
+                data.Rows.Add("Wednesday", visitorCalculator(DateTime.Parse(Date1).AddDays(3).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(3).ToString("yyyy-MM-dd")));
+                data.Rows.Add("Thursday", visitorCalculator(DateTime.Parse(Date1).AddDays(4).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(4).ToString("yyyy-MM-dd")));
+                data.Rows.Add("Friday", visitorCalculator(DateTime.Parse(Date1).AddDays(5).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(5).ToString("yyyy-MM-dd")));
+                data.Rows.Add("Saturday", visitorCalculator(Date2), totalPrice(Date2));
 
                 WeeklyReportDataGridView.DataSource = data;
 
@@ -238,22 +243,23 @@ namespace Coursework
             }
         }
 
-        public int calc(String cal)
+        public int visitorCalculator(String date)
         {
 
-        int single = visitorsDetails.Where(a => a.Date.ToString("yyyy-MM-dd") == cal && a.GroupNum == "Single").Count() * 1;
-        int groupOf5 = visitorsDetails.Where(a => a.Date.ToString("yyyy-MM-dd") == cal && a.GroupNum == "Group of 5").Count() * 5;
-        int groupOf10 = visitorsDetails.Where(a => a.Date.ToString("yyyy-MM-dd") == cal && a.GroupNum == "Group of 10").Count() * 10;
-        int groupOf15 = visitorsDetails.Where(a => a.Date.ToString("yyyy-MM-dd") == cal && a.GroupNum == "Group of 15").Count() * 15;
+        int singleVisitor = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNum == "Single").Count() * 1;
+        int groupOf5Visitors = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNum == "Group of 5").Count() * 5;
+        int groupOf10Visitors = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNum == "Group of 10").Count() * 10;
+        int groupOf15Visitors = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNum == "Group of 15").Count() * 15;
 
-            int sum = single + groupOf5 + groupOf10 + groupOf15;
-            return sum;
+        int totalVisitors = singleVisitor + groupOf5Visitors + groupOf10Visitors + groupOf15Visitors;
+        return totalVisitors;
+
         }
 
-        public int totalPrice(String cal)
+        public int totalPrice(String price)
         {
 
-            int totalprice = visitorsDetails.Where(a => a.Date.ToString("yyyy-MM-dd") == cal).Select(a => a.TotalPrice).Sum();
+            int totalprice = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == price).Select(visitorDetail => visitorDetail.TotalPrice).Sum();
 
             return totalprice;
         }
@@ -267,7 +273,8 @@ namespace Coursework
         {
             DailyReportButton_Click(sender, e);
             WeeklyReportButton_Click(sender, e);
-            weeklyChart(DateTime.Now.ToString("yyyy-MM-dd"));
+            weeklyEarningsChart(DateTime.Now.ToString("yyyy-MM-dd"));
+            weeklyVisitorsChart(DateTime.Now.ToString("yyyy-MM-dd"));
         }
 
         private void tabPage5_Click(object sender, EventArgs e)
@@ -285,34 +292,15 @@ namespace Coursework
 
         }
 
-        private void weeklyChart(String date)
+        private void weeklyVisitorsChart(String date)
         {
             FileStream fileStream = new FileStream(location.dataFile, FileMode.Open, FileAccess.Read);
 
             try
             {
+                DataTable data;
 
-                var vistor2 = xmlSerializer.Deserialize(fileStream);
-
-                visitorsDetails = (List<VisitorDetails>)vistor2;
-
-                DataTable data = new DataTable();
-
-                data.Columns.Add("Day");
-                data.Columns.Add("Total Visitor");
-                data.Columns.Add("Total Earning");
-
-                int D = ((int)DateTime.Parse(currentDate).DayOfWeek);
-                String Date1 = (DateTime.Parse(currentDate).AddDays(-D)).ToString("yyyy-MM-dd");
-                String Date2 = (DateTime.Parse(currentDate).AddDays((7 - D))).ToString("yyyy-MM-dd");
-
-                data.Rows.Add("Sunday", calc(Date1), totalPrice(Date1));
-                data.Rows.Add("Monday", calc(DateTime.Parse(Date1).AddDays(1).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(1).ToString("yyyy-MM-dd")));
-                data.Rows.Add("Tuesday", calc(DateTime.Parse(Date1).AddDays(2).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(2).ToString("yyyy-MM-dd")));
-                data.Rows.Add("Wednesday", calc(DateTime.Parse(Date1).AddDays(3).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(3).ToString("yyyy-MM-dd")));
-                data.Rows.Add("Thursday", calc(DateTime.Parse(Date1).AddDays(4).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(4).ToString("yyyy-MM-dd")));
-                data.Rows.Add("Friday", calc(DateTime.Parse(Date1).AddDays(5).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(5).ToString("yyyy-MM-dd")));
-                data.Rows.Add("Saturday", calc(Date2), totalPrice(Date2));
+                data = chartRowAdder(fileStream);
 
                 chartVisitor.Series["Series1"].LegendText = "Visitors";
                 chartVisitor.Series["Series1"].ChartType = SeriesChartType.Column;
@@ -323,7 +311,27 @@ namespace Coursework
                 chartVisitor.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
                 chartVisitor.DataSource = data;
 
-                chartEarning.Series["Series1"].LegendText = "Price";
+
+                fileStream.Close();
+            }
+            catch (Exception e)
+            {
+                fileStream.Close();
+            }
+        }
+
+        private void weeklyEarningsChart(String date)
+        {
+            FileStream fileStream = new FileStream(location.dataFile, FileMode.Open, FileAccess.Read);
+
+            try
+            {
+                DataTable data;
+
+                data = chartRowAdder(fileStream);
+
+
+                chartEarning.Series["Series1"].LegendText = "Earnings";
                 chartEarning.Series["Series1"].ChartType = SeriesChartType.Column;
                 chartEarning.Series["Series1"].IsValueShownAsLabel = true;
                 chartEarning.Series["Series1"].XValueMember = "Day";
@@ -340,12 +348,103 @@ namespace Coursework
             }
         }
 
+        private DataTable chartRowAdder(FileStream fileStream) {
+
+            var vistor2 = xmlSerializer.Deserialize(fileStream);
+
+            visitorsDetails = (List<VisitorDetails>)vistor2;
+
+            DataTable data = new DataTable();
+
+            data.Columns.Add("Day");
+            data.Columns.Add("Total Visitor");
+            data.Columns.Add("Total Earning");
+
+            int D = ((int)DateTime.Parse(currentDate).DayOfWeek);
+            String Date1 = (DateTime.Parse(currentDate).AddDays(-D)).ToString("yyyy-MM-dd");
+            String Date2 = (DateTime.Parse(currentDate).AddDays((7 - D))).ToString("yyyy-MM-dd");
+
+            data.Rows.Add("Sunday", visitorCalculator(Date1), totalPrice(Date1));
+            data.Rows.Add("Monday", visitorCalculator(DateTime.Parse(Date1).AddDays(1).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(1).ToString("yyyy-MM-dd")));
+            data.Rows.Add("Tuesday", visitorCalculator(DateTime.Parse(Date1).AddDays(2).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(2).ToString("yyyy-MM-dd")));
+            data.Rows.Add("Wednesday", visitorCalculator(DateTime.Parse(Date1).AddDays(3).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(3).ToString("yyyy-MM-dd")));
+            data.Rows.Add("Thursday", visitorCalculator(DateTime.Parse(Date1).AddDays(4).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(4).ToString("yyyy-MM-dd")));
+            data.Rows.Add("Friday", visitorCalculator(DateTime.Parse(Date1).AddDays(5).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(5).ToString("yyyy-MM-dd")));
+            data.Rows.Add("Saturday", visitorCalculator(Date2), totalPrice(Date2));
+
+            return data;
+        }
+
         private void btnLoad_Click(object sender, EventArgs e)
         {
 
             String currentDate = DateTime.Now.ToString("yyyy-MM-dd");
             
-            weeklyChart(currentDate);
+            weeklyEarningsChart(currentDate);
+            weeklyVisitorsChart(currentDate);
+        }
+
+        private void comboBoxDuration_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtOutTime.Text = DateTime.Now.ToLongTimeString();
+
+            DateTime currentTimeDate = DateTime.Now;
+
+            if (comboBoxDuration.Text == "1")
+            {
+                txtEntryTime.Text = DateTime.Now.ToString("t");
+                txtOutTime.Text = currentTimeDate.AddHours(1).ToString("t");
+            }
+
+            if (comboBoxDuration.Text == "2")
+            {
+                txtEntryTime.Text = DateTime.Now.ToString("t");
+                txtOutTime.Text = currentTimeDate.AddHours(2).ToString("t");
+            }
+
+            if (comboBoxDuration.Text == "3")
+            {
+                txtEntryTime.Text = DateTime.Now.ToString("t");
+                txtOutTime.Text = currentTimeDate.AddHours(3).ToString("t");
+            }
+
+            if (comboBoxDuration.Text == "4")
+            {
+                txtEntryTime.Text = DateTime.Now.ToString("t");
+                txtOutTime.Text = currentTimeDate.AddHours(4).ToString("t");
+            }
+
+            if (comboBoxDuration.Text == "Unlimited")
+            {
+                txtEntryTime.Text = DateTime.Now.ToString("t");
+                DateTime timeNow = DateTime.Now;
+                DateTime sixPmTime = new DateTime(timeNow.Year, timeNow.Month, timeNow.Day, 18, 0, 0, 0);
+                txtOutTime.Text = sixPmTime.ToString("t");
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnLoad_Click_1(object sender, EventArgs e)
+        {
+            FileStream fileStream2 = new FileStream(location.dataFile, FileMode.OpenOrCreate, FileAccess.Write);
+
+            VisitorDetails info = new VisitorDetails();
+
+            visitorsDetails.Add(info);
+            xmlSerializer.Serialize(fileStream2, visitorsDetails);
+
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = visitorsDetails;
+            fileStream2.Close();
         }
     }
 }
