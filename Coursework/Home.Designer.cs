@@ -30,15 +30,16 @@ namespace Coursework
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabHomePage = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.comboBoxDuration = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
@@ -84,7 +85,6 @@ namespace Coursework
             this.chartEarning = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnGenerateVisitorChart = new System.Windows.Forms.Button();
             this.chartVisitor = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnLoad = new System.Windows.Forms.Button();
             this.tabHomePage.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -158,9 +158,22 @@ namespace Coursework
             this.panel1.TabIndex = 24;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // btnLoad
+            // 
+            this.btnLoad.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoad.Location = new System.Drawing.Point(21, 219);
+            this.btnLoad.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(152, 37);
+            this.btnLoad.TabIndex = 43;
+            this.btnLoad.Text = "Import";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click_1);
+            // 
             // comboBoxDuration
             // 
             this.comboBoxDuration.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDuration.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxDuration.FormattingEnabled = true;
             this.comboBoxDuration.Items.AddRange(new object[] {
             "1",
@@ -170,7 +183,7 @@ namespace Coursework
             "Unlimited"});
             this.comboBoxDuration.Location = new System.Drawing.Point(969, 116);
             this.comboBoxDuration.Name = "comboBoxDuration";
-            this.comboBoxDuration.Size = new System.Drawing.Size(146, 24);
+            this.comboBoxDuration.Size = new System.Drawing.Size(146, 23);
             this.comboBoxDuration.TabIndex = 42;
             this.comboBoxDuration.SelectedIndexChanged += new System.EventHandler(this.comboBoxDuration_SelectedIndexChanged);
             // 
@@ -230,6 +243,7 @@ namespace Coursework
             // 
             // btnTicket
             // 
+            this.btnTicket.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTicket.Location = new System.Drawing.Point(957, 219);
             this.btnTicket.Margin = new System.Windows.Forms.Padding(4);
             this.btnTicket.Name = "btnTicket";
@@ -286,6 +300,7 @@ namespace Coursework
             // comboGroupBy
             // 
             this.comboGroupBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboGroupBy.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboGroupBy.Items.AddRange(new object[] {
             "Single",
             "Group of 5",
@@ -294,7 +309,7 @@ namespace Coursework
             this.comboGroupBy.Location = new System.Drawing.Point(496, 116);
             this.comboGroupBy.Margin = new System.Windows.Forms.Padding(4);
             this.comboGroupBy.Name = "comboGroupBy";
-            this.comboGroupBy.Size = new System.Drawing.Size(243, 24);
+            this.comboGroupBy.Size = new System.Drawing.Size(243, 23);
             this.comboGroupBy.TabIndex = 29;
             // 
             // txtPhone
@@ -408,6 +423,8 @@ namespace Coursework
             // 
             // DatePicker
             // 
+            this.DatePicker.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DatePicker.Location = new System.Drawing.Point(495, 166);
             this.DatePicker.Margin = new System.Windows.Forms.Padding(4);
             this.DatePicker.Name = "DatePicker";
@@ -642,16 +659,16 @@ namespace Coursework
             // 
             // chartEarning
             // 
-            chartArea9.Name = "ChartArea1";
-            this.chartEarning.ChartAreas.Add(chartArea9);
-            legend9.Name = "Legend1";
-            this.chartEarning.Legends.Add(legend9);
+            chartArea1.Name = "ChartArea1";
+            this.chartEarning.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartEarning.Legends.Add(legend1);
             this.chartEarning.Location = new System.Drawing.Point(617, 57);
             this.chartEarning.Name = "chartEarning";
-            series9.ChartArea = "ChartArea1";
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            this.chartEarning.Series.Add(series9);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartEarning.Series.Add(series1);
             this.chartEarning.Size = new System.Drawing.Size(503, 416);
             this.chartEarning.TabIndex = 2;
             this.chartEarning.Text = "chart2";
@@ -669,30 +686,19 @@ namespace Coursework
             // 
             // chartVisitor
             // 
-            chartArea10.Name = "ChartArea1";
-            this.chartVisitor.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            this.chartVisitor.Legends.Add(legend10);
+            chartArea2.Name = "ChartArea1";
+            this.chartVisitor.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartVisitor.Legends.Add(legend2);
             this.chartVisitor.Location = new System.Drawing.Point(37, 57);
             this.chartVisitor.Name = "chartVisitor";
-            series10.ChartArea = "ChartArea1";
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            this.chartVisitor.Series.Add(series10);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartVisitor.Series.Add(series2);
             this.chartVisitor.Size = new System.Drawing.Size(504, 416);
             this.chartVisitor.TabIndex = 0;
             this.chartVisitor.Text = "chart1";
-            // 
-            // btnLoad
-            // 
-            this.btnLoad.Location = new System.Drawing.Point(21, 219);
-            this.btnLoad.Margin = new System.Windows.Forms.Padding(4);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(152, 37);
-            this.btnLoad.TabIndex = 43;
-            this.btnLoad.Text = "Import";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click_1);
             // 
             // Home
             // 

@@ -436,12 +436,6 @@ namespace Coursework
         private void btnLoad_Click_1(object sender, EventArgs e)
         {
             FileStream fileStream2 = new FileStream(location.dataFile, FileMode.OpenOrCreate, FileAccess.Write);
-
-            VisitorDetails info = new VisitorDetails();
-
-            visitorsDetails.Add(info);
-            xmlSerializer.Serialize(fileStream2, visitorsDetails);
-
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = visitorsDetails;
             fileStream2.Close();
