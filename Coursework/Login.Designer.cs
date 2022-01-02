@@ -43,7 +43,7 @@ namespace Coursework
             this.lblLoginTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLoginTitle.Location = new System.Drawing.Point(158, 70);
             this.lblLoginTitle.Name = "lblLoginTitle";
-            this.lblLoginTitle.Size = new System.Drawing.Size(106, 39);
+            this.lblLoginTitle.Size = new System.Drawing.Size(101, 38);
             this.lblLoginTitle.TabIndex = 0;
             this.lblLoginTitle.Text = "Login";
             // 
@@ -99,7 +99,7 @@ namespace Coursework
             this.loginBtn.UseVisualStyleBackColor = false;
             this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
             // 
-            // login
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -110,7 +110,8 @@ namespace Coursework
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblLoginTitle);
-            this.Name = "login";
+            this.MaximizeBox = false;
+            this.Name = "Login";
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
