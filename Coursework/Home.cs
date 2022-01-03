@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.FileIO;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Serialization;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Xml.Serialization;
 
 namespace Coursework
 {
@@ -21,6 +18,7 @@ namespace Coursework
 
         XmlSerializer xmlSerializerDailyReport;
         List<VisitorDetails> visitorsDetails;
+
         List<VisitorDetails> visitorsDetailsDailyReport;
 
         String currentDate = DateTime.Now.ToString("yyyy-MM-dd");
@@ -85,7 +83,7 @@ namespace Coursework
 
         }
 
-  
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -100,7 +98,7 @@ namespace Coursework
 
             DayOfWeek day = info.Date.DayOfWeek;
             switch (day)
-            {   
+            {
                 case DayOfWeek.Monday:
                 case DayOfWeek.Tuesday:
                 case DayOfWeek.Wednesday:
@@ -122,7 +120,8 @@ namespace Coursework
             {
                 info.Age = 12;
             }
-            else {
+            else
+            {
                 info.Age = 13;
             }
 
@@ -134,6 +133,8 @@ namespace Coursework
             xmlSerializer.Serialize(fileStream2, visitorsDetails);
 
             dataGridEntryForm.DataSource = null;
+
+
             dataGridEntryForm.DataSource = visitorsDetails;
             fileStream2.Close();
 
@@ -148,13 +149,13 @@ namespace Coursework
         public int visitorCalculator(String date)
         {
 
-        int singleVisitor = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNum == "Single").Count() * 1;
-        int groupOf5Visitors = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNum == "Group of 5").Count() * 5;
-        int groupOf10Visitors = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNum == "Group of 10").Count() * 10;
-        int groupOf15Visitors = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNum == "Group of 15").Count() * 15;
+            int singleVisitor = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNum == "Single").Count() * 1;
+            int groupOf5Visitors = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNum == "Group of 5").Count() * 5;
+            int groupOf10Visitors = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNum == "Group of 10").Count() * 10;
+            int groupOf15Visitors = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNum == "Group of 15").Count() * 15;
 
-        int totalVisitors = singleVisitor + groupOf5Visitors + groupOf10Visitors + groupOf15Visitors;
-        return totalVisitors;
+            int totalVisitors = singleVisitor + groupOf5Visitors + groupOf10Visitors + groupOf15Visitors;
+            return totalVisitors;
 
         }
 
@@ -237,7 +238,8 @@ namespace Coursework
             }
         }
 
-        private DataTable chartRowAdder(FileStream fileStream) {
+        private DataTable chartRowAdder(FileStream fileStream)
+        {
 
             var vistor2 = xmlSerializer.Deserialize(fileStream);
 
@@ -268,7 +270,7 @@ namespace Coursework
         {
 
             String currentDate = DateTime.Now.ToString("yyyy-MM-dd");
-            
+
             weeklyEarningsChart(currentDate);
             weeklyVisitorsChart(currentDate);
         }
@@ -365,7 +367,7 @@ namespace Coursework
             FileStream fileStream = new FileStream(location.dataFile, FileMode.Open, FileAccess.Read);
 
             try
-              
+
             {
                 DataTable data;
 
@@ -455,6 +457,108 @@ namespace Coursework
                 }
             }
             return data;
+        }
+
+
+        List<ticketPrices> ticketPrice;
+        static ticketPrices ticketprices;
+        private void btnTicketImport_Click(object sender, EventArgs e)
+        {
+
+            ticketPrice = new List<ticketPrices>();
+
+            DataTable data;
+            //data = NewDataTable(@"D:/hehehehehe.csv");
+            data = NewDataTable(location.csvFile);
+            //Console.WriteLine(data);
+
+            dataGridTicketRates.DataSource = data;
+
+
+        }
+
+
+        public static DataTable NewDataTable(string fileName,  bool firstRowContainsFieldNames = true)
+        {
+            DataTable result = new DataTable();
+
+            using (TextFieldParser tfp = new TextFieldParser(fileName))
+            {
+                tfp.SetDelimiters(",");
+
+                // Get Some Column Names
+                if (!tfp.EndOfData)
+                {
+                    string[] fields = tfp.ReadFields();
+
+                    for (int i = 0; i < fields.Count(); i++)
+                    {
+                        if (firstRowContainsFieldNames)
+                            result.Columns.Add(fields[i]);
+                        else
+                            result.Columns.Add("Col" + i);
+
+
+                    }
+
+                    // If first line is data then add it
+                    if (!firstRowContainsFieldNames)
+                        result.Rows.Add(fields);
+                }
+
+                // Get Remaining Rows
+                while (!tfp.EndOfData)
+                    result.Rows.Add(tfp.ReadFields());
+            }
+
+            return result;
+        }
+
+        private void btnTicketExport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Build the CSV file data as a Comma separated string.
+                string csv = string.Empty;
+
+                //Add the Header row for CSV file.
+                foreach (DataGridViewColumn column in dataGridTicketRates.Columns)
+                {
+                    csv += column.HeaderText + ',';
+                }
+                //Add new line.
+                csv += "\r\n";
+
+                //Adding the Rows
+
+                foreach (DataGridViewRow row in dataGridTicketRates.Rows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        if (cell.Value != null)
+                        {
+                            //Add the Data rows.
+                            csv += cell.Value.ToString().TrimEnd(',').Replace(",", ";") + ',';
+                        }
+                        // break;
+                    }
+                    //Add new line.
+                    csv += "\r\n";
+                }
+
+                //Exporting to CSV.
+                //string folderPath = location.csvFile;
+                //if (!Directory.Exists(folderPath))
+               // {
+                    //Directory.CreateDirectory(folderPath);
+                //}
+                File.WriteAllText(location.csvFile, csv);
+                MessageBox.Show("Success");
+            }
+            catch
+            {
+                MessageBox.Show("HEHEHE");
+            }
         }
     }
 

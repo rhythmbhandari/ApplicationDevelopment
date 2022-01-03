@@ -12,6 +12,8 @@ namespace Coursework
        
             public static String ticketPriceList = System.IO.Path.GetDirectoryName(Application.ExecutablePath).ToString() + "/ticketPriceList.xml";
             public static String dataFile = System.IO.Path.GetDirectoryName(Application.ExecutablePath).ToString() + "/dataFile.xml";
-        
+        public static String csvFile = System.IO.Path.GetDirectoryName(Application.ExecutablePath).ToString() + "/h.csv";
+
+
     }
 }

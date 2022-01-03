@@ -74,6 +74,8 @@ namespace Coursework
             this.btnGenerateDailyReport = new System.Windows.Forms.Button();
             this.dataGridDailyReport = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btnSortEarnings = new System.Windows.Forms.Button();
+            this.btnSortVisitors = new System.Windows.Forms.Button();
             this.btnGenerateWeeklyReport = new System.Windows.Forms.Button();
             this.dataGridWeeklyReport = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -82,8 +84,6 @@ namespace Coursework
             this.chartEarning = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnGenerateVisitorChart = new System.Windows.Forms.Button();
             this.chartVisitor = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnSortVisitors = new System.Windows.Forms.Button();
-            this.btnSortEarnings = new System.Windows.Forms.Button();
             this.tabHomePage.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.pnlIssueTicket.SuspendLayout();
@@ -471,6 +471,7 @@ namespace Coursework
             this.btnTicketExport.TabIndex = 6;
             this.btnTicketExport.Text = "Export";
             this.btnTicketExport.UseVisualStyleBackColor = true;
+            this.btnTicketExport.Click += new System.EventHandler(this.btnTicketExport_Click);
             // 
             // btnTicketEdit
             // 
@@ -491,6 +492,7 @@ namespace Coursework
             this.btnTicketImport.TabIndex = 4;
             this.btnTicketImport.Text = "Import";
             this.btnTicketImport.UseVisualStyleBackColor = true;
+            this.btnTicketImport.Click += new System.EventHandler(this.btnTicketImport_Click);
             // 
             // dataGridTicketRates
             // 
@@ -551,6 +553,30 @@ namespace Coursework
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Weekly Report";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // btnSortEarnings
+            // 
+            this.btnSortEarnings.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSortEarnings.Location = new System.Drawing.Point(805, 567);
+            this.btnSortEarnings.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSortEarnings.Name = "btnSortEarnings";
+            this.btnSortEarnings.Size = new System.Drawing.Size(335, 52);
+            this.btnSortEarnings.TabIndex = 20;
+            this.btnSortEarnings.Text = "Sort by total earnings";
+            this.btnSortEarnings.UseVisualStyleBackColor = true;
+            this.btnSortEarnings.Click += new System.EventHandler(this.btnSortEarnings_Click);
+            // 
+            // btnSortVisitors
+            // 
+            this.btnSortVisitors.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSortVisitors.Location = new System.Drawing.Point(805, 491);
+            this.btnSortVisitors.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSortVisitors.Name = "btnSortVisitors";
+            this.btnSortVisitors.Size = new System.Drawing.Size(335, 52);
+            this.btnSortVisitors.TabIndex = 19;
+            this.btnSortVisitors.Text = "Sort by total visitors";
+            this.btnSortVisitors.UseVisualStyleBackColor = true;
+            this.btnSortVisitors.Click += new System.EventHandler(this.btnSortVisitors_Click);
             // 
             // btnGenerateWeeklyReport
             // 
@@ -654,30 +680,6 @@ namespace Coursework
             this.chartVisitor.Size = new System.Drawing.Size(504, 416);
             this.chartVisitor.TabIndex = 0;
             this.chartVisitor.Text = "chart1";
-            // 
-            // btnSortVisitors
-            // 
-            this.btnSortVisitors.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSortVisitors.Location = new System.Drawing.Point(805, 491);
-            this.btnSortVisitors.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSortVisitors.Name = "btnSortVisitors";
-            this.btnSortVisitors.Size = new System.Drawing.Size(335, 52);
-            this.btnSortVisitors.TabIndex = 19;
-            this.btnSortVisitors.Text = "Sort by total visitors";
-            this.btnSortVisitors.UseVisualStyleBackColor = true;
-            this.btnSortVisitors.Click += new System.EventHandler(this.btnSortVisitors_Click);
-            // 
-            // btnSortEarnings
-            // 
-            this.btnSortEarnings.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSortEarnings.Location = new System.Drawing.Point(805, 567);
-            this.btnSortEarnings.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSortEarnings.Name = "btnSortEarnings";
-            this.btnSortEarnings.Size = new System.Drawing.Size(335, 52);
-            this.btnSortEarnings.TabIndex = 20;
-            this.btnSortEarnings.Text = "Sort by total earnings";
-            this.btnSortEarnings.UseVisualStyleBackColor = true;
-            this.btnSortEarnings.Click += new System.EventHandler(this.btnSortEarnings_Click);
             // 
             // Home
             // 
