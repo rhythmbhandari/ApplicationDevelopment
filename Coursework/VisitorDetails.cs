@@ -17,15 +17,15 @@ namespace Coursework
 
         public String DayType { get; set; }
 
-        public DateTime CheckInTime { get; set; }
+        public DateTime EntryTime { get; set; }
 
-        public int Age { get; set; }
+        public int AgeGroup { get; set; }
 
-        public String GroupNum { get; set; }
+        public String GroupNumber { get; set; }
 
-        public DateTime CheckOutTime { get; set; }
+        public DateTime ExitTime { get; set; }
 
-        public int TotalPrice { get; set; }
+        public int Price { get; set; }
 
     }
 }

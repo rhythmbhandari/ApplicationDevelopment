@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml.Serialization;
@@ -41,7 +42,7 @@ namespace Coursework
             txtBoxPrice.Text = "200";
             radioBtnAdult.Checked = true;
 
-            setup();
+            visitorDetailsFilePreparer();
             txtBoxVisitorId.Text = generateId();
 
             //tabHomePage.SelectedIndexChanged += new EventHandler(tabHomePage_SelectedIndexChanged);
@@ -64,9 +65,9 @@ namespace Coursework
             return '#' + finalString.ToUpper();
         }
 
-        private void setup()
+        private void visitorDetailsFilePreparer()
         {
-            FileStream fileStream = new FileStream(location.dataFile, FileMode.OpenOrCreate, FileAccess.Write);
+            FileStream fileStream = new FileStream(fileLocation.visitorDetailsFile, FileMode.OpenOrCreate, FileAccess.Write);
             try
             {
                 var value = xmlSerializer.Deserialize(fileStream);
@@ -87,16 +88,56 @@ namespace Coursework
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            FileStream fileStream2 = new FileStream(location.dataFile, FileMode.OpenOrCreate, FileAccess.Write);
+            FileStream fileStreamEntry = new FileStream(fileLocation.visitorDetailsFile, FileMode.OpenOrCreate, FileAccess.Write);
 
-            VisitorDetails info = new VisitorDetails();
+            VisitorDetails visitorDetail = new VisitorDetails();
 
-            info.ID = txtBoxVisitorId.Text;
-            info.Name = txtBoxFullName.Text;
-            info.Contact = txtBoxPhone.Text;
-            info.Date = DateTime.Parse(datePickerDate.Text, System.Globalization.CultureInfo.CurrentCulture);
+            Regex regexPhone = new Regex("^[0-9]+$");
+            Regex regexName = new Regex(@"^[a-zA-Z]{2}$");
 
-            DayOfWeek day = info.Date.DayOfWeek;
+            visitorDetail.ID = txtBoxVisitorId.Text;
+
+            if (txtBoxFullName.Text.Trim() == "")
+            {
+                MessageBox.Show("Please enter your name!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtBoxFullName.Text = "";
+                fileStreamEntry.Close();
+                return;
+            }
+            //else if (!regexName.IsMatch(txtBoxFullName.Text)) {
+            //    MessageBox.Show("Only alphabets are allowed in full name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    txtBoxFullName.Text = "";
+            //    fileStreamEntry.Close();
+            //    return;
+            //}
+            else
+            {
+                visitorDetail.Name = txtBoxFullName.Text;
+            }
+            if (txtBoxPhone.Text.Trim() == "")
+            {
+                MessageBox.Show("Please enter your phone number!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                fileStreamEntry.Close();
+                return;
+            }
+            else if (!regexPhone.IsMatch(txtBoxPhone.Text.Trim()))
+            {
+                MessageBox.Show("Only numbers are allowed.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtBoxPhone.Text = "";
+                fileStreamEntry.Close();
+                return;
+            }
+            else if (txtBoxPhone.Text.Trim().Length != 10) {
+                MessageBox.Show("Phone number must be of 10 digits.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                fileStreamEntry.Close();
+                return;
+            }
+            {
+                visitorDetail.Contact = txtBoxPhone.Text;
+            }
+
+            visitorDetail.Date = DateTime.Parse(datePickerDate.Text, System.Globalization.CultureInfo.CurrentCulture);
+            DayOfWeek day = visitorDetail.Date.DayOfWeek;
             switch (day)
             {
                 case DayOfWeek.Monday:
@@ -104,40 +145,43 @@ namespace Coursework
                 case DayOfWeek.Wednesday:
                 case DayOfWeek.Thursday:
                 case DayOfWeek.Friday:
-                    info.DayType = "Weekday";
+                    visitorDetail.DayType = "Weekday";
                     break;
                 case DayOfWeek.Saturday:
                 default:
-                    info.DayType = "Weekend";
+                    visitorDetail.DayType = "Weekend";
                     break;
             }
-            Console.WriteLine("Start Of Week: " + info.DayType);
+            Console.WriteLine("Start Of Week: " + visitorDetail.DayType);
 
-            info.CheckInTime = DateTime.Parse(txtBoxEntryTime.Text);
+            visitorDetail.EntryTime = DateTime.Parse(txtBoxEntryTime.Text);
 
 
             if (radioBtnChild.Checked)
             {
-                info.Age = 12;
+                visitorDetail.AgeGroup = 12;
             }
             else
             {
-                info.Age = 13;
+                visitorDetail.AgeGroup = 13;
             }
 
-            info.CheckOutTime = DateTime.Parse(txtBoxOutTime.Text);
-            info.GroupNum = comboBoxGroupBy.Text;
-            info.TotalPrice = Int32.Parse(txtBoxPrice.Text);
+            visitorDetail.ExitTime = DateTime.Parse(txtBoxOutTime.Text);
+            visitorDetail.GroupNumber = comboBoxGroupBy.Text;
+            visitorDetail.Price = Int32.Parse(txtBoxPrice.Text);
 
-            visitorsDetails.Add(info);
-            xmlSerializer.Serialize(fileStream2, visitorsDetails);
+            visitorsDetails.Add(visitorDetail);
+            xmlSerializer.Serialize(fileStreamEntry, visitorsDetails);
 
             dataGridEntryForm.DataSource = null;
 
 
             dataGridEntryForm.DataSource = visitorsDetails;
-            fileStream2.Close();
+            fileStreamEntry.Close();
 
+            txtBoxVisitorId.Text = generateId();
+            txtBoxFullName.Text = "";
+            txtBoxPhone.Text = "";
         }
 
         private void txtEntryTime_Click(object sender, EventArgs e)
@@ -149,22 +193,22 @@ namespace Coursework
         public int visitorCalculator(String date)
         {
 
-            int singleVisitor = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNum == "Single").Count() * 1;
-            int groupOf5Visitors = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNum == "Group of 5").Count() * 5;
-            int groupOf10Visitors = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNum == "Group of 10").Count() * 10;
-            int groupOf15Visitors = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNum == "Group of 15").Count() * 15;
+            int singleVisitor = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNumber == "Single").Count() * 1;
+            int groupOf5Visitors = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNumber == "Group of 5").Count() * 5;
+            int groupOf10Visitors = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNumber == "Group of 10").Count() * 10;
+            int groupOf15Visitors = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == date && visitorDetail.GroupNumber == "Group of 15").Count() * 15;
 
             int totalVisitors = singleVisitor + groupOf5Visitors + groupOf10Visitors + groupOf15Visitors;
             return totalVisitors;
 
         }
 
-        public int totalPrice(String price)
+        public int grandTotal(String price)
         {
 
-            int totalprice = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == price).Select(visitorDetail => visitorDetail.TotalPrice).Sum();
+            int grandTotal = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == price).Select(visitorDetail => visitorDetail.Price).Sum();
 
-            return totalprice;
+            return grandTotal;
         }
 
         private void WeeklyReportDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -184,7 +228,7 @@ namespace Coursework
 
         private void weeklyVisitorsChart(String date)
         {
-            FileStream fileStream = new FileStream(location.dataFile, FileMode.Open, FileAccess.Read);
+            FileStream fileStream = new FileStream(fileLocation.visitorDetailsFile, FileMode.Open, FileAccess.Read);
 
             try
             {
@@ -212,13 +256,13 @@ namespace Coursework
 
         private void weeklyEarningsChart(String date)
         {
-            FileStream fileStream = new FileStream(location.dataFile, FileMode.Open, FileAccess.Read);
+            FileStream fileStream = new FileStream(fileLocation.visitorDetailsFile, FileMode.Open, FileAccess.Read);
 
             try
             {
-                DataTable data;
+                DataTable dataTable;
 
-                data = chartRowAdder(fileStream);
+                dataTable = chartRowAdder(fileStream);
 
 
                 chartEarning.Series["Series1"].LegendText = "Earnings";
@@ -228,7 +272,7 @@ namespace Coursework
                 chartEarning.Series["Series1"].YValueMembers = "Total Earning";
                 chartEarning.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
                 chartEarning.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
-                chartEarning.DataSource = data;
+                chartEarning.DataSource = dataTable;
 
                 fileStream.Close();
             }
@@ -241,29 +285,29 @@ namespace Coursework
         private DataTable chartRowAdder(FileStream fileStream)
         {
 
-            var vistor2 = xmlSerializer.Deserialize(fileStream);
+            var chartRow = xmlSerializer.Deserialize(fileStream);
 
-            visitorsDetails = (List<VisitorDetails>)vistor2;
+            visitorsDetails = (List<VisitorDetails>)chartRow;
 
-            DataTable data = new DataTable();
+            DataTable dataTable = new DataTable();
 
-            data.Columns.Add("Day");
-            data.Columns.Add("Total Visitor");
-            data.Columns.Add("Total Earning");
+            dataTable.Columns.Add("Day");
+            dataTable.Columns.Add("Total Visitor");
+            dataTable.Columns.Add("Total Earning");
 
-            int D = ((int)DateTime.Parse(currentDate).DayOfWeek);
-            String Date1 = (DateTime.Parse(currentDate).AddDays(-D)).ToString("yyyy-MM-dd");
-            String Date2 = (DateTime.Parse(currentDate).AddDays((7 - D))).ToString("yyyy-MM-dd");
+            int remainingDays = ((int)DateTime.Parse(currentDate).DayOfWeek);
+            String InitialDayofWeek = (DateTime.Parse(currentDate).AddDays(-remainingDays)).ToString("yyyy-MM-dd");
+            String finalDayofWeek = (DateTime.Parse(currentDate).AddDays((7 - remainingDays))).ToString("yyyy-MM-dd");
 
-            data.Rows.Add("Sunday", visitorCalculator(Date1), totalPrice(Date1));
-            data.Rows.Add("Monday", visitorCalculator(DateTime.Parse(Date1).AddDays(1).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(1).ToString("yyyy-MM-dd")));
-            data.Rows.Add("Tuesday", visitorCalculator(DateTime.Parse(Date1).AddDays(2).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(2).ToString("yyyy-MM-dd")));
-            data.Rows.Add("Wednesday", visitorCalculator(DateTime.Parse(Date1).AddDays(3).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(3).ToString("yyyy-MM-dd")));
-            data.Rows.Add("Thursday", visitorCalculator(DateTime.Parse(Date1).AddDays(4).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(4).ToString("yyyy-MM-dd")));
-            data.Rows.Add("Friday", visitorCalculator(DateTime.Parse(Date1).AddDays(5).ToString("yyyy-MM-dd")), totalPrice(DateTime.Parse(Date1).AddDays(5).ToString("yyyy-MM-dd")));
-            data.Rows.Add("Saturday", visitorCalculator(Date2), totalPrice(Date2));
+            dataTable.Rows.Add("Sunday", visitorCalculator(InitialDayofWeek), grandTotal(InitialDayofWeek));
+            dataTable.Rows.Add("Monday", visitorCalculator(DateTime.Parse(InitialDayofWeek).AddDays(1).ToString("yyyy-MM-dd")), grandTotal(DateTime.Parse(InitialDayofWeek).AddDays(1).ToString("yyyy-MM-dd")));
+            dataTable.Rows.Add("Tuesday", visitorCalculator(DateTime.Parse(InitialDayofWeek).AddDays(2).ToString("yyyy-MM-dd")), grandTotal(DateTime.Parse(InitialDayofWeek).AddDays(2).ToString("yyyy-MM-dd")));
+            dataTable.Rows.Add("Wednesday", visitorCalculator(DateTime.Parse(InitialDayofWeek).AddDays(3).ToString("yyyy-MM-dd")), grandTotal(DateTime.Parse(InitialDayofWeek).AddDays(3).ToString("yyyy-MM-dd")));
+            dataTable.Rows.Add("Thursday", visitorCalculator(DateTime.Parse(InitialDayofWeek).AddDays(4).ToString("yyyy-MM-dd")), grandTotal(DateTime.Parse(InitialDayofWeek).AddDays(4).ToString("yyyy-MM-dd")));
+            dataTable.Rows.Add("Friday", visitorCalculator(DateTime.Parse(InitialDayofWeek).AddDays(5).ToString("yyyy-MM-dd")), grandTotal(DateTime.Parse(InitialDayofWeek).AddDays(5).ToString("yyyy-MM-dd")));
+            dataTable.Rows.Add("Saturday", visitorCalculator(finalDayofWeek), grandTotal(finalDayofWeek));
 
-            return data;
+            return dataTable;
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -317,7 +361,7 @@ namespace Coursework
 
         private void btnLoad_Click_1(object sender, EventArgs e)
         {
-            FileStream fileStream2 = new FileStream(location.dataFile, FileMode.OpenOrCreate, FileAccess.Write);
+            FileStream fileStream2 = new FileStream(fileLocation.visitorDetailsFile, FileMode.OpenOrCreate, FileAccess.Write);
             dataGridEntryForm.DataSource = null;
             dataGridEntryForm.DataSource = visitorsDetails;
             fileStream2.Close();
@@ -325,7 +369,7 @@ namespace Coursework
 
         private void btnGenerateDailyReport_Click(object sender, EventArgs e)
         {
-            FileStream fileStream = new FileStream(location.dataFile, FileMode.Open, FileAccess.Read);
+            FileStream fileStream = new FileStream(fileLocation.visitorDetailsFile, FileMode.Open, FileAccess.Read);
 
             try
             {
@@ -335,24 +379,21 @@ namespace Coursework
 
                 DataTable data = new DataTable();
 
-                int Single = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == currentDate && visitorDetail.GroupNum == "Single").Count();
-                int GroupOf5 = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == currentDate && visitorDetail.GroupNum == "Group of 5").Count();
-                int GroupOf10 = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == currentDate && visitorDetail.GroupNum == "Group of 10").Count();
-                int GroupOf15 = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == currentDate && visitorDetail.GroupNum == "Group of 15").Count();
+                int Single = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == currentDate && visitorDetail.GroupNumber == "Single").Count();
+                int GroupOf5 = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == currentDate && visitorDetail.GroupNumber == "Group of 5").Count();
+                int GroupOf10 = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == currentDate && visitorDetail.GroupNumber == "Group of 10").Count();
+                int GroupOf15 = visitorsDetails.Where(visitorDetail => visitorDetail.Date.ToString("yyyy-MM-dd") == currentDate && visitorDetail.GroupNumber == "Group of 15").Count();
 
                 data.Columns.Add("Name");
                 data.Columns.Add("Count");
 
-                //data.Rows.Add("Child", Child);
                 data.Rows.Add("Single", Single);
                 data.Rows.Add("Group of 5", GroupOf5);
                 data.Rows.Add("Group of 10", GroupOf10);
                 data.Rows.Add("Group of 15", GroupOf15);
-                // data.Rows.Add("Group of 20", GroupOf20);
 
                 dataGridDailyReport.DataSource = data;
 
-                //VisitorCountTextBox.Text = (Child + Adult + (GroupOf5 * 5) + (GroupOf10 * 10) + (GroupOf15 * 15) + (GroupOf20 * 20)).ToString();
 
                 fileStream.Close();
             }
@@ -364,7 +405,7 @@ namespace Coursework
 
         private void btnGenerateWeeklyReport_Click_1(object sender, EventArgs e)
         {
-            FileStream fileStream = new FileStream(location.dataFile, FileMode.Open, FileAccess.Read);
+            FileStream fileStream = new FileStream(fileLocation.visitorDetailsFile, FileMode.Open, FileAccess.Read);
 
             try
 
@@ -388,18 +429,18 @@ namespace Coursework
         {
             visitorsDetails = new List<VisitorDetails>();
 
-            FileStream fileStream = new FileStream(location.dataFile, FileMode.Open, FileAccess.Read);
+            FileStream fileStream = new FileStream(fileLocation.visitorDetailsFile, FileMode.Open, FileAccess.Read);
 
             try
             {
 
-                DataTable data;
+                DataTable dataTable;
 
-                data = chartRowAdder(fileStream);
+                dataTable = chartRowAdder(fileStream);
 
-                data = BubbleSortingAlgorithm(data, "Total Visitor");
+                dataTable = BubbleSortingAlgorithm(dataTable, "Total Visitor");
 
-                dataGridWeeklyReport.DataSource = data;
+                dataGridWeeklyReport.DataSource = dataTable;
 
                 fileStream.Close();
             }
@@ -413,7 +454,7 @@ namespace Coursework
         {
             visitorsDetails = new List<VisitorDetails>();
 
-            FileStream fileStream = new FileStream(location.dataFile, FileMode.Open, FileAccess.Read);
+            FileStream fileStream = new FileStream(fileLocation.visitorDetailsFile, FileMode.Open, FileAccess.Read);
 
             try
             {
@@ -433,131 +474,137 @@ namespace Coursework
             }
         }
 
-        private DataTable BubbleSortingAlgorithm(DataTable data, String sortBy)
+        private DataTable BubbleSortingAlgorithm(DataTable dataTable, String sortBy)
         {
-            for (int i = data.Rows.Count - 1; i > 0; i--)
+            for (int i = dataTable.Rows.Count - 1; i > 0; i--)
             {
                 for (int j = 0; j <= i - 1; j++)
                 {
-                    if (Convert.ToInt32(data.Rows[j][sortBy]) > Convert.ToInt32(data.Rows[j + 1][sortBy]))
+                    if (Convert.ToInt32(dataTable.Rows[j][sortBy]) > Convert.ToInt32(dataTable.Rows[j + 1][sortBy]))
                     {
-                        var totalEarning = data.Rows[j]["Total Earning"];
-                        var totalVisitor = data.Rows[j]["Total Visitor"];
-                        var days = data.Rows[j]["Day"];
+                        var totalEarning = dataTable.Rows[j]["Total Earning"];
+                        var totalVisitor = dataTable.Rows[j]["Total Visitor"];
+                        var days = dataTable.Rows[j]["Day"];
 
-                        data.Rows[j]["Total Earning"] = data.Rows[j + 1]["Total Earning"];
-                        data.Rows[j]["Day"] = data.Rows[j + 1]["Day"];
-                        data.Rows[j]["Total Visitor"] = data.Rows[j + 1]["Total Visitor"];
+                        dataTable.Rows[j]["Total Earning"] = dataTable.Rows[j + 1]["Total Earning"];
+                        dataTable.Rows[j]["Day"] = dataTable.Rows[j + 1]["Day"];
+                        dataTable.Rows[j]["Total Visitor"] = dataTable.Rows[j + 1]["Total Visitor"];
 
-                        data.Rows[j + 1]["Total Earning"] = totalEarning;
-                        data.Rows[j + 1]["Day"] = days;
-                        data.Rows[j + 1]["Total Visitor"] = totalVisitor;
+                        dataTable.Rows[j + 1]["Total Earning"] = totalEarning;
+                        dataTable.Rows[j + 1]["Day"] = days;
+                        dataTable.Rows[j + 1]["Total Visitor"] = totalVisitor;
 
                     }
                 }
             }
-            return data;
+           return dataTable;
         }
 
 
-        List<ticketPrices> ticketPrice;
-        static ticketPrices ticketprices;
+
         private void btnTicketImport_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DataTable data;
+                data = NewDataTable(fileLocation.ticketRatesFile);
 
-            ticketPrice = new List<ticketPrices>();
-
-            DataTable data;
-            //data = NewDataTable(@"D:/hehehehehe.csv");
-            data = NewDataTable(location.csvFile);
-            //Console.WriteLine(data);
-
-            dataGridTicketRates.DataSource = data;
-
+                dataGridTicketRates.DataSource = data;
+            }
+            catch {
+                MessageBox.Show("Ticket rates import failed. PLease try again.");
+            }
 
         }
 
 
-        public static DataTable NewDataTable(string fileName,  bool firstRowContainsFieldNames = true)
+        public static DataTable NewDataTable(string fileName)
         {
-            DataTable result = new DataTable();
+            DataTable returnTable = new DataTable();
 
-            using (TextFieldParser tfp = new TextFieldParser(fileName))
+
+            using (TextFieldParser textfieldparser = new TextFieldParser(fileName))
             {
-                tfp.SetDelimiters(",");
+                textfieldparser.SetDelimiters(",");
 
-                // Get Some Column Names
-                if (!tfp.EndOfData)
+                if (!textfieldparser.EndOfData)
                 {
-                    string[] fields = tfp.ReadFields();
+                    string[] fields = textfieldparser.ReadFields();
 
                     for (int i = 0; i < fields.Count(); i++)
                     {
-                        if (firstRowContainsFieldNames)
-                            result.Columns.Add(fields[i]);
-                        else
-                            result.Columns.Add("Col" + i);
-
-
+                        returnTable.Columns.Add(fields[i]);
                     }
 
-                    // If first line is data then add it
-                    if (!firstRowContainsFieldNames)
-                        result.Rows.Add(fields);
                 }
 
-                // Get Remaining Rows
-                while (!tfp.EndOfData)
-                    result.Rows.Add(tfp.ReadFields());
+                while (!textfieldparser.EndOfData)
+                    returnTable.Rows.Add(textfieldparser.ReadFields());
             }
 
-            return result;
+            return returnTable;
         }
 
         private void btnTicketExport_Click(object sender, EventArgs e)
         {
             try
             {
-                //Build the CSV file data as a Comma separated string.
-                string csv = string.Empty;
+                string csvFile = string.Empty;
 
-                //Add the Header row for CSV file.
                 foreach (DataGridViewColumn column in dataGridTicketRates.Columns)
                 {
-                    csv += column.HeaderText + ',';
+                    csvFile += column.HeaderText + ',';
                 }
-                //Add new line.
-                csv += "\r\n";
+                csvFile += "\r\n";
 
-                //Adding the Rows
-
-                foreach (DataGridViewRow row in dataGridTicketRates.Rows)
+             foreach (DataGridViewRow dataRow in dataGridTicketRates.Rows)
                 {
-                    foreach (DataGridViewCell cell in row.Cells)
+                    foreach (DataGridViewCell dataCell in dataRow.Cells)
                     {
-                        if (cell.Value != null)
+                        if (dataCell.Value != null)
                         {
-                            //Add the Data rows.
-                            csv += cell.Value.ToString().TrimEnd(',').Replace(",", ";") + ',';
+                            csvFile += dataCell.Value.ToString().TrimEnd(',').Replace(",", ";") + ',';
                         }
-                        // break;
                     }
-                    //Add new line.
-                    csv += "\r\n";
+                    csvFile += "\r\n";
                 }
-
-                //Exporting to CSV.
-                //string folderPath = location.csvFile;
-                //if (!Directory.Exists(folderPath))
-               // {
-                    //Directory.CreateDirectory(folderPath);
-                //}
-                File.WriteAllText(location.csvFile, csv);
-                MessageBox.Show("Success");
+                File.WriteAllText(fileLocation.ticketRatesFile, csvFile);
+                MessageBox.Show("Successfully exported.");
             }
             catch
             {
-                MessageBox.Show("HEHEHE");
+                MessageBox.Show("Ticket rates export failed. PLease try again.");
+            }
+        }
+
+        private void btnSearchEntry_Click(object sender, EventArgs e)
+        {
+            FileStream fileStream = new FileStream(fileLocation.visitorDetailsFile, FileMode.Open, FileAccess.Read);
+            String search = txtBoxSearchVisitorID.Text;
+            String displayText = "";
+            try
+            {
+                visitorsDetails = (List<VisitorDetails>)xmlSerializer.Deserialize(fileStream);
+                foreach (VisitorDetails visitorDetail in visitorsDetails)
+                {
+                    if (visitorDetail.ID == search)
+                    {
+                        displayText = "Full Name: " + visitorDetail.Name + " " + "Contact Number: " + visitorDetail.Contact + "\n" 
+                            +"Entry Time: " + visitorDetail.EntryTime + " " + "Exit Time: " + visitorDetail.ExitTime;
+                    }
+                }
+                if (String.IsNullOrEmpty(displayText))
+                {
+                    MessageBox.Show("The entered visitor ID: " + search + " is invalid.");
+                }
+                else
+                {
+                    MessageBox.Show(displayText);
+                }
+            }
+            catch
+            {
+
             }
         }
     }
