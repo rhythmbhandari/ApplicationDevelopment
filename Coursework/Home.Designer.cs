@@ -30,12 +30,12 @@ namespace Coursework
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabHomePage = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -91,6 +91,9 @@ namespace Coursework
             this.chartEarning = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnGenerateVisitorChart = new System.Windows.Forms.Button();
             this.chartVisitor = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.lblLogout = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.tabHomePage.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -106,6 +109,7 @@ namespace Coursework
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartEarning)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartVisitor)).BeginInit();
+            this.tabPage6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabHomePage
@@ -115,6 +119,7 @@ namespace Coursework
             this.tabHomePage.Controls.Add(this.tabPage3);
             this.tabHomePage.Controls.Add(this.tabPage5);
             this.tabHomePage.Controls.Add(this.tabPage4);
+            this.tabHomePage.Controls.Add(this.tabPage6);
             this.tabHomePage.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabHomePage.Location = new System.Drawing.Point(0, 0);
             this.tabHomePage.Name = "tabHomePage";
@@ -729,16 +734,16 @@ namespace Coursework
             // 
             // chartEarning
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chartEarning.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartEarning.Legends.Add(legend5);
+            chartArea1.Name = "ChartArea1";
+            this.chartEarning.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartEarning.Legends.Add(legend1);
             this.chartEarning.Location = new System.Drawing.Point(617, 57);
             this.chartEarning.Name = "chartEarning";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chartEarning.Series.Add(series5);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartEarning.Series.Add(series1);
             this.chartEarning.Size = new System.Drawing.Size(503, 416);
             this.chartEarning.TabIndex = 2;
             this.chartEarning.Text = "chart2";
@@ -756,19 +761,55 @@ namespace Coursework
             // 
             // chartVisitor
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartVisitor.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartVisitor.Legends.Add(legend6);
+            chartArea2.Name = "ChartArea1";
+            this.chartVisitor.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartVisitor.Legends.Add(legend2);
             this.chartVisitor.Location = new System.Drawing.Point(37, 57);
             this.chartVisitor.Name = "chartVisitor";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chartVisitor.Series.Add(series6);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartVisitor.Series.Add(series2);
             this.chartVisitor.Size = new System.Drawing.Size(504, 416);
             this.chartVisitor.TabIndex = 0;
             this.chartVisitor.Text = "chart1";
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.btnLogout);
+            this.tabPage6.Controls.Add(this.lblLogout);
+            this.tabPage6.Location = new System.Drawing.Point(4, 25);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(1157, 648);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Logout";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // lblLogout
+            // 
+            this.lblLogout.AutoSize = true;
+            this.lblLogout.Font = new System.Drawing.Font("Lucida Console", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogout.Location = new System.Drawing.Point(212, 128);
+            this.lblLogout.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLogout.Name = "lblLogout";
+            this.lblLogout.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblLogout.Size = new System.Drawing.Size(687, 33);
+            this.lblLogout.TabIndex = 22;
+            this.lblLogout.Text = "Are you sure you want to logout?";
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Location = new System.Drawing.Point(411, 298);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(335, 52);
+            this.btnLogout.TabIndex = 23;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // Home
             // 
@@ -802,6 +843,8 @@ namespace Coursework
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartEarning)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartVisitor)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -863,6 +906,9 @@ namespace Coursework
         private System.Windows.Forms.Button btnSearchEntry;
         private System.Windows.Forms.Label lblDailyReport;
         private System.Windows.Forms.Label lblWeeklyReport;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Label lblLogout;
     }
 }
 
