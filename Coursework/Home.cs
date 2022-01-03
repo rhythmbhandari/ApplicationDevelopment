@@ -167,7 +167,16 @@ namespace Coursework
 
             visitorDetail.EntryTime = DateTime.Parse(txtBoxEntryTime.Text);
 
-            visitorDetail.Duration = int.Parse(comboBoxDuration.Text);
+            Console.WriteLine("Unlimited: " + comboBoxDuration.Text);
+
+            if (comboBoxDuration.Text == "Unlimited")
+            {
+                visitorDetail.Duration = 8;
+            }
+            else {
+                visitorDetail.Duration = int.Parse(comboBoxDuration.Text);
+            }
+           
 
 
             if (radioBtnChild.Checked)
@@ -190,51 +199,8 @@ namespace Coursework
 
             Console.WriteLine(visitorDetail.GroupNumber);
 
-            if (visitorDetail.AgeGroup <= 12 && visitorDetail.Duration == 1)
-            {
-                txtBoxPrice.Text = prices.childOneHour.ToString();
-            }
-            else if (visitorDetail.AgeGroup <= 12 && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 2)
-            {
-                txtBoxPrice.Text = prices.childTwoHours.ToString();
-            }
-            else if (visitorDetail.AgeGroup <= 12 && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 3)
-            {
-                txtBoxPrice.Text = prices.childThreeHours.ToString();
-            }
-            else if (visitorDetail.AgeGroup <= 12 && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 4)
-            {
-                txtBoxPrice.Text = prices.childFourHours.ToString();
-            }
-            else if (visitorDetail.AgeGroup <= 12 && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 5)
-            {
-                txtBoxPrice.Text = prices.childUnlimitedHours.ToString();
-            }
-
-            //Price calculation for Adults
-            else if (visitorDetail.AgeGroup > 12 && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 1)
-            {
-                txtBoxPrice.Text = prices.adultOneHour.ToString();
-            }
-            else if (visitorDetail.AgeGroup > 12 && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 2)
-            {
-                txtBoxPrice.Text = prices.adultTwoHours.ToString();
-            }
-            else if (visitorDetail.AgeGroup > 12 && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 3)
-            {
-                txtBoxPrice.Text = prices.adultThreeHours.ToString();
-            }
-            else if (visitorDetail.AgeGroup > 12 && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 4)
-            {
-                txtBoxPrice.Text = prices.adultFourHours.ToString();
-            }
-            else if (visitorDetail.AgeGroup > 12 && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 5)
-            {
-                txtBoxPrice.Text = prices.adultUnlimitedHours.ToString();
-            }
-
-            //Price calculation for Group of five
-            else if (visitorDetail.GroupNumber == "Group of 5" && visitorDetail.Duration == 1)
+             //Price calculation for Group of five
+            if (visitorDetail.GroupNumber == "Group of 5" && visitorDetail.Duration == 1)
             {
                 txtBoxPrice.Text = prices.groupOfFiveOneHour.ToString();
             }
@@ -250,7 +216,7 @@ namespace Coursework
             {
                 txtBoxPrice.Text = prices.groupOfFiveFourHours.ToString();
             }
-            else if (visitorDetail.GroupNumber == "Group of 5" && visitorDetail.Duration == 5)
+            else if (visitorDetail.GroupNumber == "Group of 5" && visitorDetail.Duration == 8)
             {
                 txtBoxPrice.Text = prices.groupOfFiveUnlimitedHours.ToString();
             }
@@ -272,7 +238,7 @@ namespace Coursework
             {
                 txtBoxPrice.Text = prices.groupOfTenFourHours.ToString();
             }
-            else if (visitorDetail.GroupNumber == "Group of 10" && visitorDetail.Duration == 5)
+            else if (visitorDetail.GroupNumber == "Group of 10" && visitorDetail.Duration == 8)
             {
                 txtBoxPrice.Text = prices.groupOfTenUnlimitedHours.ToString();
             }
@@ -294,10 +260,56 @@ namespace Coursework
             {
                 txtBoxPrice.Text = prices.groupOfFifteenFourHours.ToString();
             }
-            else if (visitorDetail.GroupNumber == "Group of 15" && visitorDetail.Duration == 5)
+            else if (visitorDetail.GroupNumber == "Group of 15" && visitorDetail.Duration == 8)
             {
                 txtBoxPrice.Text = prices.groupOfFifteenUnlimitedsHours.ToString();
             }
+
+
+            if (visitorDetail.AgeGroup <= 12 && visitorDetail.GroupNumber == "Single" && visitorDetail.Duration == 1)
+            {
+                txtBoxPrice.Text = prices.childOneHour.ToString();
+            }
+            else if (visitorDetail.AgeGroup <= 12 && visitorDetail.GroupNumber == "Single" && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 2)
+            {
+                txtBoxPrice.Text = prices.childTwoHours.ToString();
+            }
+            else if (visitorDetail.AgeGroup <= 12 && visitorDetail.GroupNumber == "Single" && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 3)
+            {
+                txtBoxPrice.Text = prices.childThreeHours.ToString();
+            }
+            else if (visitorDetail.AgeGroup <= 12 && visitorDetail.GroupNumber == "Single" && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 4)
+            {
+                txtBoxPrice.Text = prices.childFourHours.ToString();
+            }
+            else if (visitorDetail.AgeGroup <= 12 && visitorDetail.GroupNumber == "Single" && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 8)
+            {
+                txtBoxPrice.Text = prices.childUnlimitedHours.ToString();
+            }
+
+            //Price calculation for Adults
+            else if (visitorDetail.AgeGroup > 12 && visitorDetail.AgeGroup != 0 && visitorDetail.GroupNumber == "Single" && visitorDetail.Duration == 1)
+            {
+                txtBoxPrice.Text = prices.adultOneHour.ToString();
+            }
+            else if (visitorDetail.AgeGroup > 12 && visitorDetail.AgeGroup != 0 && visitorDetail.GroupNumber == "Single" && visitorDetail.Duration == 2)
+            {
+                txtBoxPrice.Text = prices.adultTwoHours.ToString();
+            }
+            else if (visitorDetail.AgeGroup > 12 && visitorDetail.AgeGroup != 0 && visitorDetail.GroupNumber == "Single" && visitorDetail.Duration == 3)
+            {
+                txtBoxPrice.Text = prices.adultThreeHours.ToString();
+            }
+            else if (visitorDetail.AgeGroup > 12 && visitorDetail.AgeGroup != 0 && visitorDetail.GroupNumber == "Single" && visitorDetail.Duration == 4)
+            {
+                txtBoxPrice.Text = prices.adultFourHours.ToString();
+            }
+            else if (visitorDetail.AgeGroup > 12 && visitorDetail.AgeGroup != 0 && visitorDetail.GroupNumber == "Single" && visitorDetail.Duration == 8)
+            {
+                txtBoxPrice.Text = prices.adultUnlimitedHours.ToString();
+            }
+
+           
 
 
             dataGridEntryForm.DataSource = null;
