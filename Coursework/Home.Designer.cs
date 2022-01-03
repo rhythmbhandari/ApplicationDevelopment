@@ -30,14 +30,19 @@ namespace Coursework
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabHomePage = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblSearchVisitorId = new System.Windows.Forms.Label();
+            this.txtBoxSearchVisitorID = new System.Windows.Forms.TextBox();
+            this.lblSearchEntry = new System.Windows.Forms.Label();
+            this.btnSearchEntry = new System.Windows.Forms.Button();
             this.pnlIssueTicket = new System.Windows.Forms.Panel();
             this.btnImport = new System.Windows.Forms.Button();
             this.comboBoxDuration = new System.Windows.Forms.ComboBox();
@@ -71,9 +76,11 @@ namespace Coursework
             this.btnTicketImport = new System.Windows.Forms.Button();
             this.dataGridTicketRates = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lblDailyReport = new System.Windows.Forms.Label();
             this.btnGenerateDailyReport = new System.Windows.Forms.Button();
             this.dataGridDailyReport = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.lblWeeklyReport = new System.Windows.Forms.Label();
             this.btnSortEarnings = new System.Windows.Forms.Button();
             this.btnSortVisitors = new System.Windows.Forms.Button();
             this.btnGenerateWeeklyReport = new System.Windows.Forms.Button();
@@ -84,13 +91,9 @@ namespace Coursework
             this.chartEarning = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnGenerateVisitorChart = new System.Windows.Forms.Button();
             this.chartVisitor = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSearchEntry = new System.Windows.Forms.Button();
-            this.lblSearchEntry = new System.Windows.Forms.Label();
-            this.txtBoxSearchVisitorID = new System.Windows.Forms.TextBox();
-            this.lblSearchVisitorId = new System.Windows.Forms.Label();
             this.tabHomePage.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.pnlIssueTicket.SuspendLayout();
             this.pnlAgeRadioGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEntryForm)).BeginInit();
@@ -103,7 +106,6 @@ namespace Coursework
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartEarning)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartVisitor)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabHomePage
@@ -113,6 +115,7 @@ namespace Coursework
             this.tabHomePage.Controls.Add(this.tabPage3);
             this.tabHomePage.Controls.Add(this.tabPage5);
             this.tabHomePage.Controls.Add(this.tabPage4);
+            this.tabHomePage.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabHomePage.Location = new System.Drawing.Point(0, 0);
             this.tabHomePage.Name = "tabHomePage";
             this.tabHomePage.SelectedIndex = 0;
@@ -132,6 +135,60 @@ namespace Coursework
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Entry Form";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lblSearchVisitorId);
+            this.panel1.Controls.Add(this.txtBoxSearchVisitorID);
+            this.panel1.Controls.Add(this.lblSearchEntry);
+            this.panel1.Controls.Add(this.btnSearchEntry);
+            this.panel1.Location = new System.Drawing.Point(9, 303);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(185, 334);
+            this.panel1.TabIndex = 44;
+            // 
+            // lblSearchVisitorId
+            // 
+            this.lblSearchVisitorId.AutoSize = true;
+            this.lblSearchVisitorId.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearchVisitorId.Location = new System.Drawing.Point(14, 97);
+            this.lblSearchVisitorId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSearchVisitorId.Name = "lblSearchVisitorId";
+            this.lblSearchVisitorId.Size = new System.Drawing.Size(128, 17);
+            this.lblSearchVisitorId.TabIndex = 45;
+            this.lblSearchVisitorId.Text = "Visitor ID :";
+            // 
+            // txtBoxSearchVisitorID
+            // 
+            this.txtBoxSearchVisitorID.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxSearchVisitorID.Location = new System.Drawing.Point(17, 141);
+            this.txtBoxSearchVisitorID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxSearchVisitorID.Name = "txtBoxSearchVisitorID";
+            this.txtBoxSearchVisitorID.Size = new System.Drawing.Size(152, 22);
+            this.txtBoxSearchVisitorID.TabIndex = 44;
+            // 
+            // lblSearchEntry
+            // 
+            this.lblSearchEntry.AutoSize = true;
+            this.lblSearchEntry.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearchEntry.Location = new System.Drawing.Point(14, 23);
+            this.lblSearchEntry.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSearchEntry.Name = "lblSearchEntry";
+            this.lblSearchEntry.Size = new System.Drawing.Size(128, 17);
+            this.lblSearchEntry.TabIndex = 44;
+            this.lblSearchEntry.Text = "Search Entry";
+            // 
+            // btnSearchEntry
+            // 
+            this.btnSearchEntry.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchEntry.Location = new System.Drawing.Point(17, 234);
+            this.btnSearchEntry.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSearchEntry.Name = "btnSearchEntry";
+            this.btnSearchEntry.Size = new System.Drawing.Size(152, 37);
+            this.btnSearchEntry.TabIndex = 44;
+            this.btnSearchEntry.Text = "Search";
+            this.btnSearchEntry.UseVisualStyleBackColor = true;
+            this.btnSearchEntry.Click += new System.EventHandler(this.btnSearchEntry_Click);
             // 
             // pnlIssueTicket
             // 
@@ -461,11 +518,11 @@ namespace Coursework
             // lblTicket
             // 
             this.lblTicket.AutoSize = true;
-            this.lblTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTicket.Font = new System.Drawing.Font("Lucida Console", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTicket.Location = new System.Drawing.Point(462, 34);
             this.lblTicket.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTicket.Name = "lblTicket";
-            this.lblTicket.Size = new System.Drawing.Size(212, 38);
+            this.lblTicket.Size = new System.Drawing.Size(267, 33);
             this.lblTicket.TabIndex = 7;
             this.lblTicket.Text = "Ticket Rates";
             // 
@@ -510,9 +567,11 @@ namespace Coursework
             this.dataGridTicketRates.RowHeadersWidth = 44;
             this.dataGridTicketRates.Size = new System.Drawing.Size(1125, 282);
             this.dataGridTicketRates.TabIndex = 2;
+            this.dataGridTicketRates.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridTicketRates_CellContentClick);
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.lblDailyReport);
             this.tabPage3.Controls.Add(this.btnGenerateDailyReport);
             this.tabPage3.Controls.Add(this.dataGridDailyReport);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
@@ -522,6 +581,17 @@ namespace Coursework
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Daily Report";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // lblDailyReport
+            // 
+            this.lblDailyReport.AutoSize = true;
+            this.lblDailyReport.Font = new System.Drawing.Font("Lucida Console", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDailyReport.Location = new System.Drawing.Point(415, 29);
+            this.lblDailyReport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDailyReport.Name = "lblDailyReport";
+            this.lblDailyReport.Size = new System.Drawing.Size(267, 33);
+            this.lblDailyReport.TabIndex = 17;
+            this.lblDailyReport.Text = "Daily Report";
             // 
             // btnGenerateDailyReport
             // 
@@ -539,16 +609,17 @@ namespace Coursework
             // 
             this.dataGridDailyReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridDailyReport.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridDailyReport.Location = new System.Drawing.Point(8, 38);
+            this.dataGridDailyReport.Location = new System.Drawing.Point(8, 90);
             this.dataGridDailyReport.Name = "dataGridDailyReport";
             this.dataGridDailyReport.ReadOnly = true;
             this.dataGridDailyReport.RowHeadersWidth = 51;
             this.dataGridDailyReport.RowTemplate.Height = 24;
-            this.dataGridDailyReport.Size = new System.Drawing.Size(1133, 428);
+            this.dataGridDailyReport.Size = new System.Drawing.Size(1133, 376);
             this.dataGridDailyReport.TabIndex = 1;
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.lblWeeklyReport);
             this.tabPage5.Controls.Add(this.btnSortEarnings);
             this.tabPage5.Controls.Add(this.btnSortVisitors);
             this.tabPage5.Controls.Add(this.btnGenerateWeeklyReport);
@@ -560,6 +631,17 @@ namespace Coursework
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Weekly Report";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // lblWeeklyReport
+            // 
+            this.lblWeeklyReport.AutoSize = true;
+            this.lblWeeklyReport.Font = new System.Drawing.Font("Lucida Console", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWeeklyReport.Location = new System.Drawing.Point(424, 35);
+            this.lblWeeklyReport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblWeeklyReport.Name = "lblWeeklyReport";
+            this.lblWeeklyReport.Size = new System.Drawing.Size(288, 33);
+            this.lblWeeklyReport.TabIndex = 21;
+            this.lblWeeklyReport.Text = "Weekly Report";
             // 
             // btnSortEarnings
             // 
@@ -600,11 +682,11 @@ namespace Coursework
             // dataGridWeeklyReport
             // 
             this.dataGridWeeklyReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridWeeklyReport.Location = new System.Drawing.Point(8, 39);
+            this.dataGridWeeklyReport.Location = new System.Drawing.Point(8, 91);
             this.dataGridWeeklyReport.Name = "dataGridWeeklyReport";
             this.dataGridWeeklyReport.RowHeadersWidth = 51;
             this.dataGridWeeklyReport.RowTemplate.Height = 24;
-            this.dataGridWeeklyReport.Size = new System.Drawing.Size(1133, 429);
+            this.dataGridWeeklyReport.Size = new System.Drawing.Size(1133, 377);
             this.dataGridWeeklyReport.TabIndex = 1;
             this.dataGridWeeklyReport.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.WeeklyReportDataGridView_CellContentClick);
             // 
@@ -647,16 +729,16 @@ namespace Coursework
             // 
             // chartEarning
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartEarning.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartEarning.Legends.Add(legend1);
+            chartArea5.Name = "ChartArea1";
+            this.chartEarning.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartEarning.Legends.Add(legend5);
             this.chartEarning.Location = new System.Drawing.Point(617, 57);
             this.chartEarning.Name = "chartEarning";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartEarning.Series.Add(series1);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chartEarning.Series.Add(series5);
             this.chartEarning.Size = new System.Drawing.Size(503, 416);
             this.chartEarning.TabIndex = 2;
             this.chartEarning.Text = "chart2";
@@ -674,73 +756,19 @@ namespace Coursework
             // 
             // chartVisitor
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartVisitor.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartVisitor.Legends.Add(legend2);
+            chartArea6.Name = "ChartArea1";
+            this.chartVisitor.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chartVisitor.Legends.Add(legend6);
             this.chartVisitor.Location = new System.Drawing.Point(37, 57);
             this.chartVisitor.Name = "chartVisitor";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartVisitor.Series.Add(series2);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.chartVisitor.Series.Add(series6);
             this.chartVisitor.Size = new System.Drawing.Size(504, 416);
             this.chartVisitor.TabIndex = 0;
             this.chartVisitor.Text = "chart1";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.lblSearchVisitorId);
-            this.panel1.Controls.Add(this.txtBoxSearchVisitorID);
-            this.panel1.Controls.Add(this.lblSearchEntry);
-            this.panel1.Controls.Add(this.btnSearchEntry);
-            this.panel1.Location = new System.Drawing.Point(9, 303);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(185, 334);
-            this.panel1.TabIndex = 44;
-            // 
-            // btnSearchEntry
-            // 
-            this.btnSearchEntry.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchEntry.Location = new System.Drawing.Point(17, 234);
-            this.btnSearchEntry.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSearchEntry.Name = "btnSearchEntry";
-            this.btnSearchEntry.Size = new System.Drawing.Size(152, 37);
-            this.btnSearchEntry.TabIndex = 44;
-            this.btnSearchEntry.Text = "Search";
-            this.btnSearchEntry.UseVisualStyleBackColor = true;
-            this.btnSearchEntry.Click += new System.EventHandler(this.btnSearchEntry_Click);
-            // 
-            // lblSearchEntry
-            // 
-            this.lblSearchEntry.AutoSize = true;
-            this.lblSearchEntry.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearchEntry.Location = new System.Drawing.Point(28, 23);
-            this.lblSearchEntry.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSearchEntry.Name = "lblSearchEntry";
-            this.lblSearchEntry.Size = new System.Drawing.Size(128, 17);
-            this.lblSearchEntry.TabIndex = 44;
-            this.lblSearchEntry.Text = "Search Entry";
-            // 
-            // txtBoxSearchVisitorID
-            // 
-            this.txtBoxSearchVisitorID.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxSearchVisitorID.Location = new System.Drawing.Point(17, 141);
-            this.txtBoxSearchVisitorID.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBoxSearchVisitorID.Name = "txtBoxSearchVisitorID";
-            this.txtBoxSearchVisitorID.Size = new System.Drawing.Size(152, 22);
-            this.txtBoxSearchVisitorID.TabIndex = 44;
-            // 
-            // lblSearchVisitorId
-            // 
-            this.lblSearchVisitorId.AutoSize = true;
-            this.lblSearchVisitorId.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearchVisitorId.Location = new System.Drawing.Point(14, 97);
-            this.lblSearchVisitorId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSearchVisitorId.Name = "lblSearchVisitorId";
-            this.lblSearchVisitorId.Size = new System.Drawing.Size(128, 17);
-            this.lblSearchVisitorId.TabIndex = 45;
-            this.lblSearchVisitorId.Text = "Visitor ID :";
             // 
             // Home
             // 
@@ -754,6 +782,8 @@ namespace Coursework
             this.Load += new System.EventHandler(this.tabPage5_Load);
             this.tabHomePage.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.pnlIssueTicket.ResumeLayout(false);
             this.pnlIssueTicket.PerformLayout();
             this.pnlAgeRadioGroup.ResumeLayout(false);
@@ -763,15 +793,15 @@ namespace Coursework
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTicketRates)).EndInit();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDailyReport)).EndInit();
             this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridWeeklyReport)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartEarning)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartVisitor)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -831,6 +861,8 @@ namespace Coursework
         private System.Windows.Forms.TextBox txtBoxSearchVisitorID;
         private System.Windows.Forms.Label lblSearchEntry;
         private System.Windows.Forms.Button btnSearchEntry;
+        private System.Windows.Forms.Label lblDailyReport;
+        private System.Windows.Forms.Label lblWeeklyReport;
     }
 }
 

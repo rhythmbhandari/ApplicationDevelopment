@@ -23,33 +23,33 @@ namespace Coursework
             string adminUsername = "admin";
             string adminPassword = "admin";
 
-            string staffUsername = "admin";
-            string staffPassword = "admin";
+            string staffUsername = "staff";
+            string staffPassword = "staff";
             //getting the value from the textbox where user types
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             //check if the username and password are correct
             if (username == adminUsername && password == adminPassword)//if matches then login
             {
-                MessageBox.Show("Admin Login Success!!!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Admin Login Successfull!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
-                Home home = new Home();
+                Home home = new Home("admin");
                 home.Show();
             }else if (username == staffUsername && password == staffPassword)//if matches then login
             {
-                MessageBox.Show("Staff Login Success!!!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Staff Login Successfull", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
-                Home home = new Home();
+                Home home = new Home("staff");
                 home.Show();
             }
             //if one or more field is left empty
             else if (username == "" || password == "")
             {
-                MessageBox.Show("One or more field empty !!! Please enter credentails!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter both your username and password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else //if doesnt match then show error message
+            else // Incase of incorrect credentials.
             {
-                MessageBox.Show("Invalid Credentials !!! Please try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Incorrect password or username! Please try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

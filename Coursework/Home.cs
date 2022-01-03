@@ -24,9 +24,17 @@ namespace Coursework
 
         String currentDate = DateTime.Now.ToString("yyyy-MM-dd");
 
-        public Home()
+        String loginUser = "admin";
+
+        public Home(String loginType)
         {
             InitializeComponent();
+
+            loginUser = loginType;
+
+            if (loginType == "staff") {
+                dataGridTicketRates.Enabled = false;
+            }
 
             xmlSerializer = new XmlSerializer(typeof(List<VisitorDetails>));
 
@@ -547,34 +555,42 @@ namespace Coursework
 
         private void btnTicketExport_Click(object sender, EventArgs e)
         {
-            try
+            if (loginUser == "admin")
             {
-                string csvFile = string.Empty;
-
-                foreach (DataGridViewColumn column in dataGridTicketRates.Columns)
+                try
                 {
-                    csvFile += column.HeaderText + ',';
-                }
-                csvFile += "\r\n";
+                    string csvFile = string.Empty;
 
-             foreach (DataGridViewRow dataRow in dataGridTicketRates.Rows)
-                {
-                    foreach (DataGridViewCell dataCell in dataRow.Cells)
+                    foreach (DataGridViewColumn column in dataGridTicketRates.Columns)
                     {
-                        if (dataCell.Value != null)
-                        {
-                            csvFile += dataCell.Value.ToString().TrimEnd(',').Replace(",", ";") + ',';
-                        }
+                        csvFile += column.HeaderText + ',';
                     }
                     csvFile += "\r\n";
+
+                    foreach (DataGridViewRow dataRow in dataGridTicketRates.Rows)
+                    {
+                        foreach (DataGridViewCell dataCell in dataRow.Cells)
+                        {
+                            if (dataCell.Value != null)
+                            {
+                                Console.WriteLine(dataCell.Value);
+                                csvFile += dataCell.Value.ToString().TrimEnd(',').Replace(",", ";") + ',';
+                            }
+                        }
+                        csvFile += "\r\n";
+                    }
+                    File.WriteAllText(fileLocation.ticketRatesFile, csvFile);
+                    MessageBox.Show("Successfully exported.");
                 }
-                File.WriteAllText(fileLocation.ticketRatesFile, csvFile);
-                MessageBox.Show("Successfully exported.");
+                catch
+                {
+                    MessageBox.Show("Ticket rates export failed. PLease try again.");
+                }
             }
-            catch
-            {
-                MessageBox.Show("Ticket rates export failed. PLease try again.");
+            else {
+                MessageBox.Show("Ticket rates export is only available for Admin.");
             }
+            
         }
 
         private void btnSearchEntry_Click(object sender, EventArgs e)
@@ -606,6 +622,31 @@ namespace Coursework
             {
 
             }
+        }
+
+        private void dataGridTicketRates_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //if (loginUser == "staff")
+            //{
+
+            //    dataGridTicketRates.AllowUserToAddRows = false;
+            //    dataGridTicketRates.AllowDrop = false;
+            //    this.dataGridTicketRates.AllowUserToDeleteRows = false;
+            //    this.
+            //    this.dataGridTicketRates.AllowUserToAddRows = false;
+            //    this.dataGridTicketRates.AllowUserToAddRows = false;
+            //    this.dataGridTicketRates.AllowUserToAddRows = false;
+            //}
+        }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btmLogout_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 
