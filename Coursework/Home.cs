@@ -1,7 +1,9 @@
-﻿using Microsoft.VisualBasic.FileIO;
+﻿using CsvHelper;
+using Microsoft.VisualBasic.FileIO;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -183,7 +185,7 @@ namespace Coursework
 
             dataGridEntryForm.DataSource = null;
 
-
+            visitorsDetails = new List<VisitorDetails>();
             dataGridEntryForm.DataSource = visitorsDetails;
             fileStreamEntry.Close();
 
@@ -230,6 +232,7 @@ namespace Coursework
             btnGenerateWeeklyReport_Click_1(sender, e);
             weeklyEarningsChart(DateTime.Now.ToString("yyyy-MM-dd"));
             weeklyVisitorsChart(DateTime.Now.ToString("yyyy-MM-dd"));
+            importTicketRates();
         }
 
 
@@ -512,17 +515,78 @@ namespace Coursework
 
         private void btnTicketImport_Click(object sender, EventArgs e)
         {
+
+            importTicketRates();
+        }
+
+        private void importTicketRates() {
             try
             {
                 DataTable data;
                 data = NewDataTable(fileLocation.ticketRatesFile);
 
                 dataGridTicketRates.DataSource = data;
+
+                //TicketPrices price = new TicketPrices();
+                TickePricesByGroup pricesByGroup = new TickePricesByGroup();
+
+                var streamReader = new StreamReader(fileLocation.ticketRatesFile);
+                var csvReader = new CsvReader(streamReader, CultureInfo.InvariantCulture);
+                var ticketPrices = csvReader.GetRecords<TicketPrices>().ToList();
+                foreach (var ticketPrice in ticketPrices)
+                {
+                    switch (ticketPrice.TicketGroup)
+                    {
+                        case "Child(5-12)":
+                            pricesByGroup.childOneHour = int.Parse(ticketPrice.OneHour);
+                            pricesByGroup.childTwoHours = int.Parse(ticketPrice.TwoHours);
+                            pricesByGroup.childThreeHours = int.Parse(ticketPrice.ThreeHours);
+                            pricesByGroup.childFourHours = int.Parse(ticketPrice.FourHours);
+                            pricesByGroup.childUnlimitedHours = int.Parse(ticketPrice.Unlimited);
+                            break;
+                        case "Adult > 12":
+                            pricesByGroup.adultOneHour = int.Parse(ticketPrice.OneHour);
+                            pricesByGroup.adultTwoHours = int.Parse(ticketPrice.TwoHours);
+                            pricesByGroup.adultThreeHours = int.Parse(ticketPrice.ThreeHours);
+                            pricesByGroup.adultFourHours = int.Parse(ticketPrice.FourHours);
+                            pricesByGroup.adultUnlimitedHours = int.Parse(ticketPrice.Unlimited);
+                            break;
+                        case "Group of 5":
+                            pricesByGroup.groupOfFiveOneHour = int.Parse(ticketPrice.OneHour);
+                            pricesByGroup.groupOfFiveTwoHours = int.Parse(ticketPrice.TwoHours);
+                            pricesByGroup.groupOfFiveThreeHours = int.Parse(ticketPrice.ThreeHours);
+                            pricesByGroup.groupOfFiveFourHours = int.Parse(ticketPrice.FourHours);
+                            pricesByGroup.groupOfFiveUnlimitedHours = int.Parse(ticketPrice.Unlimited);
+                            break;
+                        case "Group of 10":
+                            pricesByGroup.groupOfTenOneHour = int.Parse(ticketPrice.OneHour);
+                            pricesByGroup.groupOfTenTwoHours = int.Parse(ticketPrice.TwoHours);
+                            pricesByGroup.groupOfTenThreeHours = int.Parse(ticketPrice.ThreeHours);
+                            pricesByGroup.groupOfTenFourHours = int.Parse(ticketPrice.FourHours);
+                            pricesByGroup.groupOfTenUnlimitedHours = int.Parse(ticketPrice.Unlimited);
+                            break;
+                        case "Group of 15":
+                            pricesByGroup.groupOfFifteenOneHour = int.Parse(ticketPrice.OneHour);
+                            pricesByGroup.groupOfFifteenTwoHours = int.Parse(ticketPrice.TwoHours);
+                            pricesByGroup.groupOfFifteenThreeHours = int.Parse(ticketPrice.ThreeHours);
+                            pricesByGroup.groupOfFifteenFourHours = int.Parse(ticketPrice.FourHours);
+                            pricesByGroup.groupOfFifteenUnlimitedsHours = int.Parse(ticketPrice.Unlimited);
+                            break;
+                        default:
+                            pricesByGroup.groupOfFifteenOneHour = int.Parse(ticketPrice.OneHour);
+                            pricesByGroup.groupOfFifteenTwoHours = int.Parse(ticketPrice.TwoHours);
+                            pricesByGroup.groupOfFifteenThreeHours = int.Parse(ticketPrice.ThreeHours);
+                            pricesByGroup.groupOfFifteenFourHours = int.Parse(ticketPrice.FourHours);
+                            pricesByGroup.groupOfFifteenUnlimitedsHours = int.Parse(ticketPrice.Unlimited);
+                            break;
+                    }
+                }
+                csvReader.Dispose();
             }
-            catch {
+            catch
+            {
                 MessageBox.Show("Ticket rates import failed. PLease try again.");
             }
-
         }
 
 
@@ -639,15 +703,6 @@ namespace Coursework
             //}
         }
 
-        private void Logout_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btmLogout_Click(object sender, EventArgs e)
-        {
-           
-        }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {

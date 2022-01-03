@@ -6,27 +6,16 @@ using System.Threading.Tasks;
 
 namespace Coursework
 {
-    class ticketPrices
+    class TicketPrices
     {
-        private string v1;
-        private int v2;
-        private string v3;
-        private string v4;
+        public int RateID { get; set; }
+        public String TicketGroup { get; set; }
 
-        public ticketPrices(string v1, int v2, string v3, string v4)
-        {
-            this.v1 = v1;
-            this.v2 = v2;
-            this.v3 = v3;
-            this.v4 = v4;
-        }
-
-        public String DayType { get; set; }
-        public String Age { get; set; }
-
-        public String GroupNum { get; set; }
         public String OneHour { get; set; }
-        public String TwoHour { get; set; }
-        public String ThreeHour { get; set; }
+        public String TwoHours { get; set; }
+        public String ThreeHours { get; set; }
+        public String FourHours { get; set; }
+        public String Unlimited { get; set; }
+
     }
 }
