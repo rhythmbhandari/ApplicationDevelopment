@@ -22,6 +22,8 @@ namespace Coursework
         XmlSerializer xmlSerializerDailyReport;
         List<VisitorDetails> visitorsDetails;
 
+        TickePricesByGroup prices;
+
         List<VisitorDetails> visitorsDetailsDailyReport;
 
         String currentDate = DateTime.Now.ToString("yyyy-MM-dd");
@@ -49,7 +51,6 @@ namespace Coursework
             comboBoxGroupBy.Text = "Single";
             txtBoxEntryTime.Text = DateTime.Now.ToString("t");
             txtBoxOutTime.Text = DateTime.Now.AddHours(1).ToString("t");
-            txtBoxPrice.Text = "200";
             radioBtnAdult.Checked = true;
 
             visitorDetailsFilePreparer();
@@ -166,6 +167,8 @@ namespace Coursework
 
             visitorDetail.EntryTime = DateTime.Parse(txtBoxEntryTime.Text);
 
+            visitorDetail.Duration = int.Parse(comboBoxDuration.Text);
+
 
             if (radioBtnChild.Checked)
             {
@@ -178,14 +181,130 @@ namespace Coursework
 
             visitorDetail.ExitTime = DateTime.Parse(txtBoxOutTime.Text);
             visitorDetail.GroupNumber = comboBoxGroupBy.Text;
-            visitorDetail.Price = Int32.Parse(txtBoxPrice.Text);
 
-            visitorsDetails.Add(visitorDetail);
-            xmlSerializer.Serialize(fileStreamEntry, visitorsDetails);
+           
+
+            Console.WriteLine(visitorDetail.AgeGroup);
+
+            Console.WriteLine(visitorDetail.Duration);
+
+            Console.WriteLine(visitorDetail.GroupNumber);
+
+            if (visitorDetail.AgeGroup <= 12 && visitorDetail.Duration == 1)
+            {
+                txtBoxPrice.Text = prices.childOneHour.ToString();
+            }
+            else if (visitorDetail.AgeGroup <= 12 && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 2)
+            {
+                txtBoxPrice.Text = prices.childTwoHours.ToString();
+            }
+            else if (visitorDetail.AgeGroup <= 12 && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 3)
+            {
+                txtBoxPrice.Text = prices.childThreeHours.ToString();
+            }
+            else if (visitorDetail.AgeGroup <= 12 && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 4)
+            {
+                txtBoxPrice.Text = prices.childFourHours.ToString();
+            }
+            else if (visitorDetail.AgeGroup <= 12 && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 5)
+            {
+                txtBoxPrice.Text = prices.childUnlimitedHours.ToString();
+            }
+
+            //Price calculation for Adults
+            else if (visitorDetail.AgeGroup > 12 && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 1)
+            {
+                txtBoxPrice.Text = prices.adultOneHour.ToString();
+            }
+            else if (visitorDetail.AgeGroup > 12 && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 2)
+            {
+                txtBoxPrice.Text = prices.adultTwoHours.ToString();
+            }
+            else if (visitorDetail.AgeGroup > 12 && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 3)
+            {
+                txtBoxPrice.Text = prices.adultThreeHours.ToString();
+            }
+            else if (visitorDetail.AgeGroup > 12 && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 4)
+            {
+                txtBoxPrice.Text = prices.adultFourHours.ToString();
+            }
+            else if (visitorDetail.AgeGroup > 12 && visitorDetail.AgeGroup != 0 && visitorDetail.Duration == 5)
+            {
+                txtBoxPrice.Text = prices.adultUnlimitedHours.ToString();
+            }
+
+            //Price calculation for Group of five
+            else if (visitorDetail.GroupNumber == "Group of 5" && visitorDetail.Duration == 1)
+            {
+                txtBoxPrice.Text = prices.groupOfFiveOneHour.ToString();
+            }
+            else if (visitorDetail.GroupNumber == "Group of 5" && visitorDetail.Duration == 2)
+            {
+                txtBoxPrice.Text = prices.groupOfFiveTwoHours.ToString();
+            }
+            else if (visitorDetail.GroupNumber == "Group of 5" && visitorDetail.Duration == 3)
+            {
+                txtBoxPrice.Text = prices.groupOfFiveThreeHours.ToString();
+            }
+            else if (visitorDetail.GroupNumber == "Group of 5" && visitorDetail.Duration == 4)
+            {
+                txtBoxPrice.Text = prices.groupOfFiveFourHours.ToString();
+            }
+            else if (visitorDetail.GroupNumber == "Group of 5" && visitorDetail.Duration == 5)
+            {
+                txtBoxPrice.Text = prices.groupOfFiveUnlimitedHours.ToString();
+            }
+
+            //Price calculation for Group of Ten
+            else if (visitorDetail.GroupNumber == "Group of 10" && visitorDetail.Duration == 1)
+            {
+                txtBoxPrice.Text = prices.groupOfTenOneHour.ToString();
+            }
+            else if (visitorDetail.GroupNumber == "Group of 10" && visitorDetail.Duration == 2)
+            {
+                txtBoxPrice.Text = prices.groupOfTenTwoHours.ToString();
+            }
+            else if (visitorDetail.GroupNumber == "Group of 10" && visitorDetail.Duration == 3)
+            {
+                txtBoxPrice.Text = prices.groupOfTenThreeHours.ToString();
+            }
+            else if (visitorDetail.GroupNumber == "Group of 10" && visitorDetail.Duration == 4)
+            {
+                txtBoxPrice.Text = prices.groupOfTenFourHours.ToString();
+            }
+            else if (visitorDetail.GroupNumber == "Group of 10" && visitorDetail.Duration == 5)
+            {
+                txtBoxPrice.Text = prices.groupOfTenUnlimitedHours.ToString();
+            }
+
+            //Price calculation for Group of Fifteen
+            else if (visitorDetail.GroupNumber == "Group of 15" && visitorDetail.Duration == 1)
+            {
+                txtBoxPrice.Text = prices.groupOfFifteenOneHour.ToString();
+            }
+            else if (visitorDetail.GroupNumber == "Group of 15" && visitorDetail.Duration == 2)
+            {
+                txtBoxPrice.Text = prices.groupOfFifteenTwoHours.ToString();
+            }
+            else if (visitorDetail.GroupNumber == "Group of 15" && visitorDetail.Duration == 3)
+            {
+                txtBoxPrice.Text = prices.groupOfFifteenThreeHours.ToString();
+            }
+            else if (visitorDetail.GroupNumber == "Group of 15" && visitorDetail.Duration == 4)
+            {
+                txtBoxPrice.Text = prices.groupOfFifteenFourHours.ToString();
+            }
+            else if (visitorDetail.GroupNumber == "Group of 15" && visitorDetail.Duration == 5)
+            {
+                txtBoxPrice.Text = prices.groupOfFifteenUnlimitedsHours.ToString();
+            }
+
 
             dataGridEntryForm.DataSource = null;
-
-            visitorsDetails = new List<VisitorDetails>();
+            visitorDetail.Price = int.Parse(txtBoxPrice.Text);
+            visitorsDetails.Add(visitorDetail);
+            xmlSerializer.Serialize(fileStreamEntry, visitorsDetails);
+            dataGridEntryForm.DataSource = null;
             dataGridEntryForm.DataSource = visitorsDetails;
             fileStreamEntry.Close();
 
@@ -233,6 +352,7 @@ namespace Coursework
             weeklyEarningsChart(DateTime.Now.ToString("yyyy-MM-dd"));
             weeklyVisitorsChart(DateTime.Now.ToString("yyyy-MM-dd"));
             importTicketRates();
+            importVisitorData();
         }
 
 
@@ -372,11 +492,17 @@ namespace Coursework
 
         private void btnLoad_Click_1(object sender, EventArgs e)
         {
+            importVisitorData();
+        }
+
+        private void importVisitorData() {
+
             FileStream fileStream2 = new FileStream(fileLocation.visitorDetailsFile, FileMode.OpenOrCreate, FileAccess.Write);
             dataGridEntryForm.DataSource = null;
             dataGridEntryForm.DataSource = visitorsDetails;
             fileStream2.Close();
         }
+
 
         private void btnGenerateDailyReport_Click(object sender, EventArgs e)
         {
@@ -519,6 +645,13 @@ namespace Coursework
             importTicketRates();
         }
 
+        private void priceCalculator() {
+
+
+
+        }
+
+
         private void importTicketRates() {
             try
             {
@@ -528,7 +661,9 @@ namespace Coursework
                 dataGridTicketRates.DataSource = data;
 
                 //TicketPrices price = new TicketPrices();
-                TickePricesByGroup pricesByGroup = new TickePricesByGroup();
+                prices = new TickePricesByGroup();
+                //TicketPrice price = new TicketPrice();
+                TicketPrices price = new TicketPrices();
 
                 var streamReader = new StreamReader(fileLocation.ticketRatesFile);
                 var csvReader = new CsvReader(streamReader, CultureInfo.InvariantCulture);
@@ -538,46 +673,46 @@ namespace Coursework
                     switch (ticketPrice.TicketGroup)
                     {
                         case "Child(5-12)":
-                            pricesByGroup.childOneHour = int.Parse(ticketPrice.OneHour);
-                            pricesByGroup.childTwoHours = int.Parse(ticketPrice.TwoHours);
-                            pricesByGroup.childThreeHours = int.Parse(ticketPrice.ThreeHours);
-                            pricesByGroup.childFourHours = int.Parse(ticketPrice.FourHours);
-                            pricesByGroup.childUnlimitedHours = int.Parse(ticketPrice.Unlimited);
+                            prices.childOneHour = int.Parse(ticketPrice.OneHour);
+                            prices.childTwoHours = int.Parse(ticketPrice.TwoHours);
+                            prices.childThreeHours = int.Parse(ticketPrice.ThreeHours);
+                            prices.childFourHours = int.Parse(ticketPrice.FourHours);
+                            prices.childUnlimitedHours = int.Parse(ticketPrice.Unlimited);
                             break;
                         case "Adult > 12":
-                            pricesByGroup.adultOneHour = int.Parse(ticketPrice.OneHour);
-                            pricesByGroup.adultTwoHours = int.Parse(ticketPrice.TwoHours);
-                            pricesByGroup.adultThreeHours = int.Parse(ticketPrice.ThreeHours);
-                            pricesByGroup.adultFourHours = int.Parse(ticketPrice.FourHours);
-                            pricesByGroup.adultUnlimitedHours = int.Parse(ticketPrice.Unlimited);
+                            prices.adultOneHour = int.Parse(ticketPrice.OneHour);
+                            prices.adultTwoHours = int.Parse(ticketPrice.TwoHours);
+                            prices.adultThreeHours = int.Parse(ticketPrice.ThreeHours);
+                            prices.adultFourHours = int.Parse(ticketPrice.FourHours);
+                            prices.adultUnlimitedHours = int.Parse(ticketPrice.Unlimited);
                             break;
                         case "Group of 5":
-                            pricesByGroup.groupOfFiveOneHour = int.Parse(ticketPrice.OneHour);
-                            pricesByGroup.groupOfFiveTwoHours = int.Parse(ticketPrice.TwoHours);
-                            pricesByGroup.groupOfFiveThreeHours = int.Parse(ticketPrice.ThreeHours);
-                            pricesByGroup.groupOfFiveFourHours = int.Parse(ticketPrice.FourHours);
-                            pricesByGroup.groupOfFiveUnlimitedHours = int.Parse(ticketPrice.Unlimited);
+                            prices.groupOfFiveOneHour = int.Parse(ticketPrice.OneHour);
+                            prices.groupOfFiveTwoHours = int.Parse(ticketPrice.TwoHours);
+                            prices.groupOfFiveThreeHours = int.Parse(ticketPrice.ThreeHours);
+                            prices.groupOfFiveFourHours = int.Parse(ticketPrice.FourHours);
+                            prices.groupOfFiveUnlimitedHours = int.Parse(ticketPrice.Unlimited);
                             break;
                         case "Group of 10":
-                            pricesByGroup.groupOfTenOneHour = int.Parse(ticketPrice.OneHour);
-                            pricesByGroup.groupOfTenTwoHours = int.Parse(ticketPrice.TwoHours);
-                            pricesByGroup.groupOfTenThreeHours = int.Parse(ticketPrice.ThreeHours);
-                            pricesByGroup.groupOfTenFourHours = int.Parse(ticketPrice.FourHours);
-                            pricesByGroup.groupOfTenUnlimitedHours = int.Parse(ticketPrice.Unlimited);
+                            prices.groupOfTenOneHour = int.Parse(ticketPrice.OneHour);
+                            prices.groupOfTenTwoHours = int.Parse(ticketPrice.TwoHours);
+                            prices.groupOfTenThreeHours = int.Parse(ticketPrice.ThreeHours);
+                            prices.groupOfTenFourHours = int.Parse(ticketPrice.FourHours);
+                            prices.groupOfTenUnlimitedHours = int.Parse(ticketPrice.Unlimited);
                             break;
                         case "Group of 15":
-                            pricesByGroup.groupOfFifteenOneHour = int.Parse(ticketPrice.OneHour);
-                            pricesByGroup.groupOfFifteenTwoHours = int.Parse(ticketPrice.TwoHours);
-                            pricesByGroup.groupOfFifteenThreeHours = int.Parse(ticketPrice.ThreeHours);
-                            pricesByGroup.groupOfFifteenFourHours = int.Parse(ticketPrice.FourHours);
-                            pricesByGroup.groupOfFifteenUnlimitedsHours = int.Parse(ticketPrice.Unlimited);
+                            prices.groupOfFifteenOneHour = int.Parse(ticketPrice.OneHour);
+                            prices.groupOfFifteenTwoHours = int.Parse(ticketPrice.TwoHours);
+                            prices.groupOfFifteenThreeHours = int.Parse(ticketPrice.ThreeHours);
+                            prices.groupOfFifteenFourHours = int.Parse(ticketPrice.FourHours);
+                            prices.groupOfFifteenUnlimitedsHours = int.Parse(ticketPrice.Unlimited);
                             break;
                         default:
-                            pricesByGroup.groupOfFifteenOneHour = int.Parse(ticketPrice.OneHour);
-                            pricesByGroup.groupOfFifteenTwoHours = int.Parse(ticketPrice.TwoHours);
-                            pricesByGroup.groupOfFifteenThreeHours = int.Parse(ticketPrice.ThreeHours);
-                            pricesByGroup.groupOfFifteenFourHours = int.Parse(ticketPrice.FourHours);
-                            pricesByGroup.groupOfFifteenUnlimitedsHours = int.Parse(ticketPrice.Unlimited);
+                            prices.groupOfFifteenOneHour = int.Parse(ticketPrice.OneHour);
+                            prices.groupOfFifteenTwoHours = int.Parse(ticketPrice.TwoHours);
+                            prices.groupOfFifteenThreeHours = int.Parse(ticketPrice.ThreeHours);
+                            prices.groupOfFifteenFourHours = int.Parse(ticketPrice.FourHours);
+                            prices.groupOfFifteenUnlimitedsHours = int.Parse(ticketPrice.Unlimited);
                             break;
                     }
                 }
@@ -709,6 +844,16 @@ namespace Coursework
             Login login = new Login();
             login.Show();
             this.Hide();
+        }
+
+        private void txtBoxFullName_TextChanged(object sender, EventArgs e)
+        {
+            priceCalculator();
+        }
+
+        private void comboBoxGroupBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            priceCalculator();
         }
     }
 

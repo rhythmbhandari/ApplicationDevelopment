@@ -15,6 +15,7 @@ namespace Coursework
 
         public DateTime Date { get; set; }
 
+        public int Duration { get; set;  }
         public String DayType { get; set; }
 
         public DateTime EntryTime { get; set; }
