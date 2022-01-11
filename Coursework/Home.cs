@@ -15,36 +15,37 @@ namespace Coursework
 {
     public partial class Home : Form
     {
-
+        //Declaring Serializers for handling objects.
         XmlSerializer xmlSerializer;
-        //List<TicketPriceDataList> ticketPricesDataList;
-
         XmlSerializer xmlSerializerDailyReport;
+
+        //Variables declaration.
+        //List<TicketPriceDataList> ticketPricesDataList;
         List<VisitorDetails> visitorsDetails;
-
         TickePricesByGroup prices;
-
         List<VisitorDetails> visitorsDetailsDailyReport;
 
+        //Current date assigned to user later for daily and weekly reports.
         String currentDate = DateTime.Now.ToString("yyyy-MM-dd");
 
+        //default value assigned for logged in user type.
         String loginUser = "admin";
 
         public Home(String loginType)
         {
             InitializeComponent();
 
+            //assigning logged in user type.
             loginUser = loginType;
 
+            //checking logged in user type for enabling or disabling editing of ticket rates.
             if (loginType == "staff") {
                 dataGridTicketRates.Enabled = false;
             }
 
+            //Initializing declared variables.
             xmlSerializer = new XmlSerializer(typeof(List<VisitorDetails>));
-
             visitorsDetails = new List<VisitorDetails>();
-
-
             xmlSerializerDailyReport = new XmlSerializer(typeof(List<VisitorDetails>));
             visitorsDetailsDailyReport = new List<VisitorDetails>();
             comboBoxDuration.Text = "1";
@@ -53,14 +54,17 @@ namespace Coursework
             txtBoxOutTime.Text = DateTime.Now.AddHours(1).ToString("t");
             radioBtnAdult.Checked = true;
 
+            //Code for preparing visitor details file to import data.
             visitorDetailsFilePreparer();
+
+            //Generating random id for ticket.
             txtBoxVisitorId.Text = generateId();
 
             //tabHomePage.SelectedIndexChanged += new EventHandler(tabHomePage_SelectedIndexChanged);
 
         }
 
-
+        //String method to generate random ID for tickets, returns string id.
         private String generateId()
         {
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -76,6 +80,7 @@ namespace Coursework
             return '#' + finalString.ToUpper();
         }
 
+        //Method to prepare visitor details file.
         private void visitorDetailsFilePreparer()
         {
             FileStream fileStream = new FileStream(FileLocation.visitorDetailsFile, FileMode.OpenOrCreate, FileAccess.Write);
@@ -84,7 +89,8 @@ namespace Coursework
                 var value = xmlSerializer.Deserialize(fileStream);
 
                 visitorsDetails = (List<VisitorDetails>)value;
-
+                
+                
                 Console.WriteLine(visitorsDetails);
                 fileStream.Close();
             }
@@ -96,9 +102,10 @@ namespace Coursework
         }
 
 
-
+        //Issue ticket button on click action.
         private void btnSave_Click(object sender, EventArgs e)
         {
+            //Exception Handling for any uncertainity while issuing ticket.
             try
             {
 
@@ -111,6 +118,7 @@ namespace Coursework
 
             visitorDetail.ID = txtBoxVisitorId.Text;
 
+            //Checking if full name is empty or not.
             if (txtBoxFullName.Text.Trim() == "")
             {
                 MessageBox.Show("Please enter your name!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -118,6 +126,8 @@ namespace Coursework
                 fileStreamEntry.Close();
                 return;
             }
+
+            //Checking if full name contains only alphabets.
             //else if (!regexName.IsMatch(txtBoxFullName.Text)) {
             //    MessageBox.Show("Only alphabets are allowed in full name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //    txtBoxFullName.Text = "";
@@ -128,12 +138,15 @@ namespace Coursework
             {
                 visitorDetail.Name = txtBoxFullName.Text;
             }
+
+            //Checking if phone number is empty or not.
             if (txtBoxPhone.Text.Trim() == "")
             {
                 MessageBox.Show("Please enter your phone number!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 fileStreamEntry.Close();
                 return;
             }
+            //Checking if phone number is numeric or not.
             else if (!regexPhone.IsMatch(txtBoxPhone.Text.Trim()))
             {
                 MessageBox.Show("Only numbers are allowed.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -141,6 +154,7 @@ namespace Coursework
                 fileStreamEntry.Close();
                 return;
             }
+            //Checking if phone number is of 10 digit or not.
             else if (txtBoxPhone.Text.Trim().Length != 10) {
                 MessageBox.Show("Phone number must be of 10 digits.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 fileStreamEntry.Close();
@@ -150,6 +164,7 @@ namespace Coursework
                 visitorDetail.Contact = txtBoxPhone.Text;
             }
 
+            //Switch cases to decide the day being a weekday or weekend.
             visitorDetail.Date = DateTime.Parse(datePickerDate.Text, System.Globalization.CultureInfo.CurrentCulture);
             DayOfWeek day = visitorDetail.Date.DayOfWeek;
             switch (day)
@@ -172,6 +187,8 @@ namespace Coursework
 
             Console.WriteLine("Unlimited: " + comboBoxDuration.Text);
 
+
+            //Time duration of issue ticket.
             if (comboBoxDuration.Text == "Unlimited")
             {
                 visitorDetail.Duration = 8;
@@ -181,7 +198,7 @@ namespace Coursework
             }
            
 
-
+            //Age group radio button.
             if (radioBtnChild.Checked)
             {
                 visitorDetail.AgeGroup = 12;
@@ -194,11 +211,12 @@ namespace Coursework
             visitorDetail.ExitTime = DateTime.Parse(txtBoxOutTime.Text);
             visitorDetail.GroupNumber =comboBoxGroupBy.Text;
 
+
+            //Exception handling for price calculation.
             try
             {
                
-
-                //Price calculation for Group of five
+                //Price calculation for Group of 5
                 if (visitorDetail.GroupNumber == "Group of 5" && visitorDetail.Duration == 1)
                 {
                     txtBoxPrice.Text = prices.groupOfFiveOneHour.ToString();
@@ -219,6 +237,8 @@ namespace Coursework
                 {
                     txtBoxPrice.Text = prices.groupOfFiveUnlimitedHours.ToString();
                 }
+
+                //Price calculation for Group of 10
                 else if (visitorDetail.GroupNumber == "Group of 10" && visitorDetail.Duration == 1)
                 {
                     txtBoxPrice.Text = prices.groupOfTenOneHour.ToString();
@@ -239,6 +259,8 @@ namespace Coursework
                 {
                     txtBoxPrice.Text = prices.groupOfTenUnlimitedHours.ToString();
                 }
+
+                //Price calculation for Group of 15
                 else if (visitorDetail.GroupNumber == "Group of 15" && visitorDetail.Duration == 1)
                 {
                     txtBoxPrice.Text = prices.groupOfFifteenOneHour.ToString();
@@ -259,6 +281,8 @@ namespace Coursework
                 {
                     txtBoxPrice.Text = prices.groupOfFifteenUnlimitedsHours.ToString();
                 }
+
+                //Price calculation for Single and Children.
                 else if (visitorDetail.AgeGroup <= 12 && visitorDetail.GroupNumber == "Single" && visitorDetail.Duration == 1)
                 {
                     txtBoxPrice.Text = prices.childOneHour.ToString();
@@ -279,6 +303,8 @@ namespace Coursework
                 {
                     txtBoxPrice.Text = prices.childUnlimitedHours.ToString();
                 }
+
+                //Price calculation for Single and Adult.
                 else if (visitorDetail.AgeGroup > 12 && visitorDetail.AgeGroup != 0 && visitorDetail.GroupNumber == "Single" && visitorDetail.Duration == 1)
                 {
                     txtBoxPrice.Text = prices.adultOneHour.ToString();
@@ -301,11 +327,15 @@ namespace Coursework
                 }
             
 
-
+            
             dataGridEntryForm.DataSource = null;
             visitorDetail.Price = int.Parse(txtBoxPrice.Text);
+
+            //Inserting data into xml file.
             visitorsDetails.Add(visitorDetail);
             xmlSerializer.Serialize(fileStreamEntry, visitorsDetails);
+
+            //Inserting data into the data source table
             dataGridEntryForm.DataSource = null;
             dataGridEntryForm.DataSource = visitorsDetails;
             fileStreamEntry.Close();
@@ -328,12 +358,14 @@ namespace Coursework
             }
        }
 
+        //Entry Time textbox action
         private void txtEntryTime_Click(object sender, EventArgs e)
         {
             txtBoxEntryTime.Text = DateTime.Now.ToString("t");
         }
 
 
+        //Method to return the total number of visitor for input date.
         public int visitorCalculator(String date)
         {
 
@@ -347,6 +379,7 @@ namespace Coursework
 
         }
 
+        //Method to return the total price.
         public int grandTotal(String price)
         {
 
@@ -360,6 +393,7 @@ namespace Coursework
 
         }
 
+        //This method invokes various methods on login for importing data and generating reports, charts.
         private void tabPage5_Load(object sender, EventArgs e)
         {
             btnGenerateDailyReport_Click(sender, e);
@@ -372,6 +406,7 @@ namespace Coursework
 
 
 
+        //This method generates the weekly visitor chart.
         private void weeklyVisitorsChart(String date)
         {
             FileStream fileStream = new FileStream(FileLocation.visitorDetailsFile, FileMode.Open, FileAccess.Read);
@@ -400,6 +435,7 @@ namespace Coursework
             }
         }
 
+        //This method generates the weekly earnings chart.
         private void weeklyEarningsChart(String date)
         {
             FileStream fileStream = new FileStream(FileLocation.visitorDetailsFile, FileMode.Open, FileAccess.Read);
@@ -410,7 +446,7 @@ namespace Coursework
 
                 dataTable = chartRowAdder(fileStream);
 
-
+                //Converting table into chart.
                 chartEarning.Series["Series1"].LegendText = "Earnings";
                 chartEarning.Series["Series1"].ChartType = SeriesChartType.Column;
                 chartEarning.Series["Series1"].IsValueShownAsLabel = true;
@@ -428,6 +464,7 @@ namespace Coursework
             }
         }
 
+        //This method takes filestream as arguments and returns table.
         private DataTable chartRowAdder(FileStream fileStream)
         {
 
@@ -456,6 +493,7 @@ namespace Coursework
             return dataTable;
         }
 
+        //This method loads charts.
         private void btnLoad_Click(object sender, EventArgs e)
         {
 
@@ -464,7 +502,8 @@ namespace Coursework
             weeklyEarningsChart(currentDate);
             weeklyVisitorsChart(currentDate);
         }
-
+        
+        //Method to update out time when duration is changed.
         private void comboBoxDuration_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtBoxOutTime.Text = DateTime.Now.ToLongTimeString();
@@ -505,11 +544,13 @@ namespace Coursework
         }
 
 
+        //Button action to import visitor data from xml file.
         private void btnLoad_Click_1(object sender, EventArgs e)
         {
             importVisitorData();
         }
 
+        //Method to import visitor data from xml file into DataGridView.
         private void importVisitorData() {
 
             FileStream fileStream2 = new FileStream(FileLocation.visitorDetailsFile, FileMode.OpenOrCreate, FileAccess.Write);
@@ -529,6 +570,7 @@ namespace Coursework
         }
 
 
+        //Button action to generate Daily report.
         private void btnGenerateDailyReport_Click(object sender, EventArgs e)
         {
             FileStream fileStream = new FileStream(FileLocation.visitorDetailsFile, FileMode.Open, FileAccess.Read);
@@ -566,6 +608,7 @@ namespace Coursework
             }
         }
 
+        //Button action to generate Weekly report.
         private void btnGenerateWeeklyReport_Click_1(object sender, EventArgs e)
         {
             FileStream fileStream = new FileStream(FileLocation.visitorDetailsFile, FileMode.Open, FileAccess.Read);
@@ -589,6 +632,7 @@ namespace Coursework
             }
         }
 
+        //Button action to sort weekly report by total visitor.
         private void btnSortVisitors_Click(object sender, EventArgs e)
         {
             visitorsDetails = new List<VisitorDetails>();
@@ -614,6 +658,7 @@ namespace Coursework
             }
         }
 
+        //Button action to sort weekly report by total earnings.
         private void btnSortEarnings_Click(object sender, EventArgs e)
         {
             visitorsDetails = new List<VisitorDetails>();
@@ -638,6 +683,7 @@ namespace Coursework
             }
         }
 
+        //Method that takes table to be sorted and sort by type as input and uses bubble sorting algorithm for sorting to return sorted data table.
         private DataTable BubbleSortingAlgorithm(DataTable dataTable, String sortBy)
         {
             for (int i = dataTable.Rows.Count - 1; i > 0; i--)
@@ -666,12 +712,14 @@ namespace Coursework
 
 
 
+        //Button action to import ticket rates button.
         private void btnTicketImport_Click(object sender, EventArgs e)
         {
 
             importTicketRates();
         }
 
+        //Method to calculate price change.
         private void priceCalculator() {
 
 
@@ -679,6 +727,7 @@ namespace Coursework
         }
 
 
+        //Method to import ticket rates from csv file.
         private void importTicketRates() {
             try
             {
@@ -752,7 +801,7 @@ namespace Coursework
             }
         }
 
-
+        //Method to parse csv file into data table.
         public static DataTable NewDataTable(string fileName)
         {
             DataTable returnTable = new DataTable();
@@ -780,8 +829,10 @@ namespace Coursework
             return returnTable;
         }
 
+        //Button action for export button.
         private void btnTicketExport_Click(object sender, EventArgs e)
         {
+            //Allowing only admin to use the export feature.
             if (loginUser == "admin")
             {
                 try
@@ -820,6 +871,7 @@ namespace Coursework
             
         }
 
+        //Button action to search ticket detail using ticket id.
         private void btnSearchEntry_Click(object sender, EventArgs e)
         {
             FileStream fileStream = new FileStream(FileLocation.visitorDetailsFile, FileMode.Open, FileAccess.Read);
@@ -868,7 +920,7 @@ namespace Coursework
             //}
         }
 
-
+        //logout button action 
         private void btnLogout_Click(object sender, EventArgs e)
         {
             Login login = new Login();
@@ -876,11 +928,13 @@ namespace Coursework
             this.Hide();
         }
 
+        //Invokes priceCalculator when full name is changed.
         private void txtBoxFullName_TextChanged(object sender, EventArgs e)
         {
             priceCalculator();
         }
 
+        //Invokes priceCalculator when duration is changed.
         private void comboBoxGroupBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             priceCalculator();
