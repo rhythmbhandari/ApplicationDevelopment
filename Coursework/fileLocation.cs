@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Coursework
 {
-    class fileLocation
+    class FileLocation
     {
        
         public static String visitorDetailsFile = System.IO.Path.GetDirectoryName(Application.ExecutablePath).ToString() + "/visitor_details.xml";

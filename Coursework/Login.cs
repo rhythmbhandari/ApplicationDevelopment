@@ -19,23 +19,30 @@ namespace Coursework
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            //username and password of the user
+            //username and password of the admin
             string adminUsername = "admin";
             string adminPassword = "admin";
 
+            //username and password of the staff
             string staffUsername = "staff";
             string staffPassword = "staff";
-            //getting the value from the textbox where user types
+
+            //getting values from user input
             string username = txtUsername.Text;
             string password = txtPassword.Text;
-            //check if the username and password are correct
-            if (username == adminUsername && password == adminPassword)//if matches then login
+
+            //checking if the username and password are correct.
+            //Incase of admin login
+            if (username == adminUsername && password == adminPassword)
             {
                 MessageBox.Show("Admin Login Successfull!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
                 Home home = new Home("admin");
                 home.Show();
-            }else if (username == staffUsername && password == staffPassword)//if matches then login
+
+            }
+            //Incase of staff login
+            else if (username == staffUsername && password == staffPassword)
             {
                 MessageBox.Show("Staff Login Successfull", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();

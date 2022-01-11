@@ -112,6 +112,7 @@ namespace Coursework
             this.Controls.Add(this.lblLoginTitle);
             this.MaximizeBox = false;
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();

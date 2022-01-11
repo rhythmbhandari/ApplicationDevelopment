@@ -30,12 +30,12 @@ namespace Coursework
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabHomePage = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -72,7 +72,6 @@ namespace Coursework
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.lblTicket = new System.Windows.Forms.Label();
             this.btnTicketExport = new System.Windows.Forms.Button();
-            this.btnTicketEdit = new System.Windows.Forms.Button();
             this.btnTicketImport = new System.Windows.Forms.Button();
             this.dataGridTicketRates = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -511,7 +510,6 @@ namespace Coursework
             // 
             this.tabPage2.Controls.Add(this.lblTicket);
             this.tabPage2.Controls.Add(this.btnTicketExport);
-            this.tabPage2.Controls.Add(this.btnTicketEdit);
             this.tabPage2.Controls.Add(this.btnTicketImport);
             this.tabPage2.Controls.Add(this.dataGridTicketRates);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
@@ -535,7 +533,7 @@ namespace Coursework
             // 
             // btnTicketExport
             // 
-            this.btnTicketExport.Location = new System.Drawing.Point(469, 431);
+            this.btnTicketExport.Location = new System.Drawing.Point(709, 431);
             this.btnTicketExport.Margin = new System.Windows.Forms.Padding(4);
             this.btnTicketExport.Name = "btnTicketExport";
             this.btnTicketExport.Size = new System.Drawing.Size(237, 52);
@@ -543,16 +541,6 @@ namespace Coursework
             this.btnTicketExport.Text = "Export";
             this.btnTicketExport.UseVisualStyleBackColor = true;
             this.btnTicketExport.Click += new System.EventHandler(this.btnTicketExport_Click);
-            // 
-            // btnTicketEdit
-            // 
-            this.btnTicketEdit.Location = new System.Drawing.Point(714, 431);
-            this.btnTicketEdit.Margin = new System.Windows.Forms.Padding(4);
-            this.btnTicketEdit.Name = "btnTicketEdit";
-            this.btnTicketEdit.Size = new System.Drawing.Size(237, 52);
-            this.btnTicketEdit.TabIndex = 5;
-            this.btnTicketEdit.Text = "Edit";
-            this.btnTicketEdit.UseVisualStyleBackColor = true;
             // 
             // btnTicketImport
             // 
@@ -736,16 +724,16 @@ namespace Coursework
             // 
             // chartEarning
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartEarning.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartEarning.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chartEarning.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartEarning.Legends.Add(legend1);
             this.chartEarning.Location = new System.Drawing.Point(617, 57);
             this.chartEarning.Name = "chartEarning";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chartEarning.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartEarning.Series.Add(series1);
             this.chartEarning.Size = new System.Drawing.Size(503, 416);
             this.chartEarning.TabIndex = 2;
             this.chartEarning.Text = "chart2";
@@ -763,16 +751,16 @@ namespace Coursework
             // 
             // chartVisitor
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartVisitor.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chartVisitor.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            this.chartVisitor.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartVisitor.Legends.Add(legend2);
             this.chartVisitor.Location = new System.Drawing.Point(37, 57);
             this.chartVisitor.Name = "chartVisitor";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartVisitor.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartVisitor.Series.Add(series2);
             this.chartVisitor.Size = new System.Drawing.Size(504, 416);
             this.chartVisitor.TabIndex = 0;
             this.chartVisitor.Text = "chart1";
@@ -821,6 +809,7 @@ namespace Coursework
             this.Controls.Add(this.tabHomePage);
             this.MaximizeBox = false;
             this.Name = "Home";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
             this.Load += new System.EventHandler(this.tabPage5_Load);
             this.tabHomePage.ResumeLayout(false);
@@ -860,7 +849,6 @@ namespace Coursework
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Button btnGenerateVisitorChart;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartVisitor;
-        private System.Windows.Forms.Button btnTicketEdit;
         private System.Windows.Forms.Button btnTicketImport;
         private System.Windows.Forms.DataGridView dataGridTicketRates;
         private System.Windows.Forms.TabPage tabPage5;
